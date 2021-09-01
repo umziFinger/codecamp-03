@@ -40,18 +40,30 @@ export default function BoardsNewPage() {
 
     function onChangeName(event) {
         setName(event.target.value)
+        if(event.target.value !== ""){
+            setNameError("")
+        }
     }
 
     function onChangePassword(event) {
         setPassword(event.target.value)
+        if(event.target.value !== ""){
+            setPasswordError("")
+        }
     }
 
     function onChangeTitle(event) {
         setTitle(event.target.value)
+        if(event.target.value !== ""){
+            setTitleError("")
+        }
     }
 
     function onChangeContent(event) {
         setContent(event.target.value)
+        if(event.target.value !== ""){
+            setContentError("")
+        }
     }
 
     function check() {

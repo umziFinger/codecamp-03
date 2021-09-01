@@ -44,6 +44,11 @@ export default function LoginPage() {
 
     }
 
+    // function deleteEmail() {
+
+    //     setEmail("")
+
+    // }
 
     return(
 

@@ -115,20 +115,20 @@ export default function BoardsNewPage() {
             setContentError("내용을 입력해주세요.")
         }
 
-        if(name !== "" && password !== "" && title !== "" && content !== ""){
-            const result = await createBoard({
-                variables: {
-                    createBoardInput: {
-                        writer:name,
-                        password:password,
-                        title:title,
-                        contents:content
-                    } 
-                }
-            })
-            console.log(result.data.createBoard._id)
-            alert("등록이 완료되었습니다!")
-        } 
+        // if(name !== "" && password !== "" && title !== "" && content !== ""){
+        //     const result = await createBoard({
+        //         variables: {
+        //             createBoardInput: {
+        //                 writer:name,
+        //                 password:password,
+        //                 title:title,
+        //                 contents:content
+        //             } 
+        //         }
+        //     })
+        //     console.log(result.data.createBoard._id)
+        //     alert("등록이 완료되었습니다!")
+        // } 
 
     }
     return (

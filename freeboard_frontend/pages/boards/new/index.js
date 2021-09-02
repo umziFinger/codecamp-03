@@ -28,15 +28,15 @@ import {useState} from 'react'
 
 export default function BoardsNewPage() {
     
-    const [name, setName] = useState()
-    const [password, setPassword] = useState()
-    const [title, setTitle] = useState()
-    const [content, setContent] = useState()
+    const [name, setName] = useState("")
+    const [password, setPassword] = useState("")
+    const [title, setTitle] = useState("")
+    const [content, setContent] = useState("")
     
-    const [nameError, setNameError] = useState()
-    const [passwordError, setPasswordError] = useState()
-    const [titleError, setTitleError] = useState()
-    const [contentError, setContentError] = useState()
+    const [nameError, setNameError] = useState("")
+    const [passwordError, setPasswordError] = useState("")
+    const [titleError, setTitleError] = useState("")
+    const [contentError, setContentError] = useState("")
 
     function onChangeName(event) {
         setName(event.target.value)

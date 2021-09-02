@@ -20,13 +20,25 @@ import {
     Star, 
     ErrorMessage, 
     Neyoung,
-    Youtube
+    Youtube,
+    YoutubeRadio
 } from '../../../styles/Example';
 
 import {useState} from 'react'
 
+import {useMutation, gql} from '@apollo/client'
+
+
 
 export default function BoardsNewPage() {
+
+    const CREATE_BOARD = gql`
+    mutation createBoard($createBoardInput: CreateBoardInput!){
+        createBoard(createBoardInput:$createBoardInput){
+            _id
+        }
+    }
+` // gaphql을 간편히 사용하기위해 CREATE_BOARD라는 변수에 할당
     
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
@@ -37,6 +49,25 @@ export default function BoardsNewPage() {
     const [passwordError, setPasswordError] = useState("")
     const [titleError, setTitleError] = useState("")
     const [contentError, setContentError] = useState("")
+
+    const [createBoard] = useMutation(CREATE_BOARD) //mutation을 사용하기 위한 변수(createBoard)와 위에서 할당한 createBoard를 CREATE_BOARD로 불러옴
+
+    // async function requestApi(){
+
+    //     const result = await createBoard({
+    //         variables: {
+    //             createBoardInput: {
+    //                 writer:name,
+    //                 password:password,
+    //                 title:title,
+    //                 contents:content
+    //             }
+    //         }
+    //     })
+    //     console.log(result.data.createBoard._id)
+
+    // }
+
 
     function onChangeName(event) {
         setName(event.target.value)
@@ -66,7 +97,7 @@ export default function BoardsNewPage() {
         }
     }
 
-    function check() {
+    async function check() {
 
         if(name === ""){
             setNameError("작성자를 입력해주세요.")
@@ -83,6 +114,21 @@ export default function BoardsNewPage() {
         if(content === ""){
             setContentError("내용을 입력해주세요.")
         }
+
+        if(name !== "" && password !== "" && title !== "" && content !== ""){
+            const result = await createBoard({
+                variables: {
+                    createBoardInput: {
+                        writer:name,
+                        password:password,
+                        title:title,
+                        contents:content
+                    } 
+                }
+            })
+            console.log(result.data.createBoard._id)
+            alert("등록이 완료되었습니다!")
+        } 
 
     }
     return (
@@ -106,7 +152,7 @@ export default function BoardsNewPage() {
                     <ErrorMessage>{titleError}</ErrorMessage>
                     <Neyoung>내용</Neyoung>
                     <br/>
-                    <Content type="text" placeholder="내용을 작성해주세요." onChange={onChangeContent}/>
+                    <Content placeholder="내용을 작성해주세요." onChange={onChangeContent}/>
                     <ErrorMessage>{contentError}</ErrorMessage>
                 </TitleContents>
                 <Adress>주소

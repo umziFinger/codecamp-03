@@ -70,10 +70,11 @@ export const Neyoung = styled.div`
     margin-top: 40px;
 `
 
-export const Content = styled.input`
+export const Content = styled.textarea`
     width: 996px;
     height: 480px;
     padding-left: 16px;
+    padding-top: 16px;    
     border: 1px solid #C4C4C4;
 `
 export const Adress = styled.div`

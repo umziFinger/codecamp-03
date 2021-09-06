@@ -45,6 +45,7 @@ export default function DynamicBoardWritePage (){
             console.log(result.data.createBoard.number)
             // router.push('/05-06-dynamic-board-read/' + result.data.createBoard.number)  옛날방식
             router.push(`/05-06-dynamic-board-read/${result.data.createBoard.number}`) // 최신방식 템플릿 리터럴
+            alert("완료")
 
         } catch(error){
 

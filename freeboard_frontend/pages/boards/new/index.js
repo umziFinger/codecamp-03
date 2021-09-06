@@ -27,19 +27,22 @@ import {
 import {useState} from 'react'
 
 import {useMutation, gql} from '@apollo/client'
+import { useRouter } from 'next/router';
 
-
-
-export default function BoardsNewPage() {
-
-    const CREATE_BOARD = gql`
+const CREATE_BOARD = gql`
     mutation createBoard($createBoardInput: CreateBoardInput!){
         createBoard(createBoardInput:$createBoardInput){
             _id
         }
-    }
+}
 ` // gaphql을 간편히 사용하기위해 CREATE_BOARD라는 변수에 할당
+
+export default function BoardsNewPage() {
+
+
     
+    const router = useRouter()
+
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [title, setTitle] = useState("")
@@ -115,21 +118,28 @@ export default function BoardsNewPage() {
             setContentError("내용을 입력해주세요.")
         }
 
-        if(name !== "" && password !== "" && title !== "" && content !== ""){
-            const result = await createBoard({
-                variables: {
-                    createBoardInput: {
-                        writer:name,
-                        password:password,
-                        title:title,
-                        contents:content
-                    } 
-                }
-            })
-            console.log(result.data.createBoard._id)
-            alert("등록이 완료되었습니다!")
-        } 
+        try{
+            if(name !== "" && password !== "" && title !== "" && content !== ""){
 
+                const result = await createBoard({
+                    variables: {
+                        createBoardInput: {
+                            writer:name,
+                            password:password,
+                            title:title,
+                            contents:content  // key와 value가 같으면 생략가능 ex) writer: writer, >>> writer,
+                        } 
+                    }
+                })
+
+
+                console.log(result.data.createBoard._id)
+                router.push(`/boards/viewboard/${result.data.createBoard._id}`)
+                alert("등록이 완료되었습니다!")
+            } 
+        }catch(error){
+            console.log("error")
+        }    
     }
     return (
         <Wrapper1>

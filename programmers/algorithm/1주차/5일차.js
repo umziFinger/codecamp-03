@@ -34,7 +34,7 @@ let count = 0;
 let price = 0;
 let grade = "";
 
-for(let i=0; i<myShopping.length; i++){
+for(let i=0; i<myShopping.length; i++){  // i가 myShopping.length와 작거나 같으면 오류 / myShopping.length는 10 인데 myShopping[10]의 값은 없다
 if(myShopping[i].category === "의류"){
     count++
     price = price + myShopping[i].price

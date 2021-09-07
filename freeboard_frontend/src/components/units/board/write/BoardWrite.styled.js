@@ -143,7 +143,7 @@ export const Confirm = styled.button`
     width: 179px;
     height: 52px;
     border: none;
-    cursor: pointer;
+    cursor: ${(props) => (props.buttonColor ? "pointer" : "default")};
     background-color: ${(props) => (props.buttonColor === true ? '#FFD600' : 'grey' )};
 `
 export const Option = styled.div`

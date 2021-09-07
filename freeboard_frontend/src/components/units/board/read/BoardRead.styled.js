@@ -1,5 +1,14 @@
 import styled from '@emotion/styled';
 
+export const Main = styled.div`
+    width: 1920px;
+    height: 3190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+`
+
 export const Wrapper = styled.div`
     width: 1200px;
     /* height: 1602px; */

@@ -83,7 +83,7 @@ export default function BoardWriteUI(props) {
                         <input type="radio" name="a"/> 사진
                     </Option>
                 </MainSetting>
-                <Confirm onClick={props.check} buttonColor={props.buttonColor}>등록하기</Confirm>
+                <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>등록하기</Confirm>
             </Wrapper>
         </Wrapper1>
     )

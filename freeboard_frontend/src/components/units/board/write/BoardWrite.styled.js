@@ -156,3 +156,16 @@ export const ErrorMessage = styled.div`
     margin-top: 10px;
     color: red;
 `
+
+export const Cancle = styled.button`
+    width: 179px;
+    height: 52px;
+    border: none;
+    background-color: grey;
+    margin-right: 24px;
+`
+
+export const Footer = styled.div`
+    display: flex;
+    margin-top: 80px;
+`

@@ -2,9 +2,11 @@ import BoardWriteUI from'./BoardWrite.presenter'
 import { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import {CREATE_BOARD} from './BoardWrite.queries'
-import router from 'next/router'
+import {useRouter} from 'next/router'
 
-export default function BoardWrite(){
+export default function BoardWrite(props){
+
+    const router = useRouter()
 
     const [createBoard] = useMutation(CREATE_BOARD)
 
@@ -60,7 +62,7 @@ export default function BoardWrite(){
             console.log(result)
             console.log(result.data.createBoard.number)
             // router.push('/05-06-dynamic-board-read/' + result.data.createBoard.number)  옛날방식
-            router.push(`/05-06-dynamic-board-read/${result.data.createBoard.number}`) // 최신방식 템플릿 리터럴
+            router.push(`/08-04-board-detail/${result.data.createBoard.number}`) // 최신방식 템플릿 리터럴
             alert("완료")
 
         } catch(error){
@@ -79,6 +81,7 @@ export default function BoardWrite(){
             aaa={aaa}
             zzz={zzz}
             qqq={qqq}
+            isEdit={props.isEdit}
         />
     )
 }

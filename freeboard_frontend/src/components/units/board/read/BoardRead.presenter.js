@@ -17,7 +17,9 @@ import {
     Like,
     LikeDiv,
     DisLikeDiv,
-    Main
+    Main,
+    ChangeButton,
+    ButtonBox
 } from './BoardRead.styled'
 
 export default function BoardReadUI(props) {
@@ -58,11 +60,11 @@ export default function BoardReadUI(props) {
                     </DisLikeDiv>
                 </Footer>
             </Wrapper>
-            <div>
-                <button>목록으로</button>
-                <button>수정하기</button>
-                <button onClick={props.onClickDelete}>삭제하기</button>
-            </div>
+            <ButtonBox>
+                <ChangeButton onClick={props.onClickMoveToList}>목록으로</ChangeButton>
+                <ChangeButton onClick={props.onClickEdit}>수정하기</ChangeButton>
+                <ChangeButton onClick={props.onClickDelete}>삭제하기</ChangeButton>
+            </ButtonBox>
         </Main>
     )
 

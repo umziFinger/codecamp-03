@@ -5,6 +5,7 @@ function solution(seoul) {
     for(let i=0; i<seoul.length; i++){
         if(seoul[i] === "Kim"){
             answer = "김서방은 "+i+"에 있다"
+            break; // 찾으면 바로 종료
         }
     }
     return answer;
@@ -37,6 +38,22 @@ function solution(s) {
     
     return checkString(s) && checkLength(s)
 }   // 문자열 다루기 기본
+
+
+
+function solution(s) {
+    if( s.length !== 4 && s.length !== 6){
+        return false;
+    }
+
+    const answer = 
+        s.split("").filter( str => isNaN(str) === true)
+         .length === 0 ? true : false     
+        
+    console.log(answer)
+}
+
+
 
 
 function solution(n) {

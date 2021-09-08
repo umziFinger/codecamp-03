@@ -29,7 +29,8 @@ import {
     MenuNumber,
     MenuTitle,
     MenuWriter,
-    MenuDate
+    MenuDate,
+    NewBoardButton
 } from "./ListRead.styled";
 
 export default function ListReadUI(props) {
@@ -102,16 +103,17 @@ export default function ListReadUI(props) {
                     <Button>검색하기</Button>
                 </Search>
                 <List>
-                    <ListMenu>
+                    <Row>
                         <MenuNumber>번호</MenuNumber>
                         <MenuTitle>제목</MenuTitle>
                         <MenuWriter>작성자</MenuWriter>
                         <MenuDate>날짜</MenuDate>
-                    </ListMenu>
+                    </Row>
                     {props.data?.fetchBoards.map((el, index)=>(
                         <Row key={el._id}>
                             <Column1>{index+1}</Column1>
-                            <Column2>{el.title}</Column2>
+                            <Column2 id={el._id} onClick={props.moveToRead}>{el.title}</Column2>
+                            {/* 리스트에서 특정 보드로 이동할때 ID값을 받아와야 하는데 컨테이너에서 그냥 _id로 쓰면 읽지 못하므로 프레젠터에서 el._id로 불러온후 id값에 저장하고 그 id를 불러와야함 */}
                             <Column3>{el.writer}</Column3>
                             <Column4>{el.createdAt.slice(0,10)}</Column4>
                         </Row>
@@ -119,7 +121,7 @@ export default function ListReadUI(props) {
                 </List>
                 <div>
                     <div></div>
-                    <div></div>
+                    <NewBoardButton onClick={props.moveToNew}><img src="/images/pencil.png"/>게시물 등록하기</NewBoardButton>
                 </div>
             </Wrapper>
         </>

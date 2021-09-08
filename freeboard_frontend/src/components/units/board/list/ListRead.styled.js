@@ -163,8 +163,8 @@ export const MenuNumber = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
-    display: flex;
-    align-items: center;
+    width: 10%;
+    text-align: center;
 `
 
 export const MenuTitle = styled.div`
@@ -172,9 +172,8 @@ export const MenuTitle = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
-    margin-left: 400px;
-    display: flex;
-    align-items: center;
+    width: 70%;
+    text-align: center;
 `
 
 export const MenuWriter = styled.div`
@@ -182,9 +181,8 @@ export const MenuWriter = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
-    margin-left: 400px;
-    display: flex;
-    align-items: center;
+    width: 10%;
+    text-align: center;
 `
 
 export const MenuDate = styled.div`
@@ -192,31 +190,26 @@ export const MenuDate = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
-    display: flex;
-    align-items: center;
-    margin-left: 143px;
+    width: 10%;
+    text-align: center;
 `
 
 
 export const Row = styled.div`
-    width: 1200px;
-    /* height: 583px; */
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #BDBDBD;
-    padding-left: 50px;
-    padding-right: 40px;
-    justify-content: space-between;
-    align-items: center;
+    height: 52px;
+    line-height: 52px;
+    border-bottom: 1px solid gray;
+    padding-right: 20px;
 `
 
 export const Column1 = styled.div`
     font-size: 16px;
     font-weight: 400;
     color: #4F4F4F;
-    height: 52px;
-    display: flex;
-    align-items: center;
+    text-align: center;
+    width: 10%;
 `
 
 export const Column2 = styled.div`
@@ -225,9 +218,11 @@ export const Column2 = styled.div`
     width: 130px;
     color: #4F4F4F;
     height: 52px;
-    margin-left: 320px;
-    display: flex;
-    align-items: center;
+    /* margin-left: 320px; */
+    /* display: flex;
+    align-items: center; */
+    text-align: center;
+    width: 70%;
 `
 
 export const Column3 = styled.div`
@@ -235,9 +230,11 @@ export const Column3 = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
-    margin-left: 300px;
-    display: flex;
-    align-items: center;
+    /* margin-left: 300px; */
+    /* display: flex;
+    align-items: center; */
+    text-align: center;
+    width: 10%;
 `
 
 export const Column4 = styled.div`
@@ -245,7 +242,21 @@ export const Column4 = styled.div`
     font-weight: 400;
     color: #4F4F4F;
     height: 52px;
+    /* display: flex;
+    align-items: center; */
+    /* margin-left: 80px; */
+    text-align: center;
+    width: 10%;
+`
+
+export const NewBoardButton = styled.div`
+    width: 171px;
+    height: 52px;
+    border-radius: 10px;
+    border: 1px solid #F2F2F2;
+    background-color: white;
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-left: 80px;
+    justify-content: space-around;
 `

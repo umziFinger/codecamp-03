@@ -4,9 +4,9 @@ import {useMutation} from '@apollo/client'
 import { useRouter } from 'next/router';
 import BoardWriteUI from './BoardWrite.presenter';
 
-import {CREATE_BOARD} from './BoardWrite.queries'
+import {CREATE_BOARD, UPDATE_BOARD} from './BoardWrite.queries'
 
-export default function BoardWrite() {
+export default function BoardWrite(props) {
 
     const router = useRouter()
 
@@ -23,6 +23,7 @@ export default function BoardWrite() {
     const [contentError, setContentError] = useState("")
 
     const [createBoard] = useMutation(CREATE_BOARD) //mutation을 사용하기 위한 변수(createBoard)와 위에서 할당한 createBoard를 CREATE_BOARD로 불러옴
+    const [updateBoard] = useMutation(UPDATE_BOARD)
 
     // async function requestApi(){
 
@@ -95,44 +96,91 @@ export default function BoardWrite() {
 
     async function check() {
 
-        if(name === ""){
-            setNameError("작성자를 입력해주세요.")
-        }
+        if(props.isEdit){
 
-        if(password === ""){
-            setPasswordError("비밀번호를 입력해주세요.")
-        }
+            if(name === ""){
+                setNameError("작성자를 입력해주세요.")
+            }
 
-        if(title === ""){
-            setTitleError("제목을 입력해주세요.")
-        }
+            if(password === ""){
+                setPasswordError("비밀번호를 입력해주세요.")
+            }
 
-        if(content === ""){
-            setContentError("내용을 입력해주세요.")
-        }
+            if(title === ""){
+                setTitleError("제목을 입력해주세요.")
+            }
 
-        try{
+            if(content === ""){
+                setContentError("내용을 입력해주세요.")
+            }
+
             if(name !== "" && password !== "" && title !== "" && content !== ""){
-
-                const result = await createBoard({
-                    variables: {
-                        createBoardInput: {
-                            writer:name,
-                            password:password,
+                
+                try{
+                    await updateBoard({
+                        variables:{updateBoardInput:{
                             title:title,
-                            contents:content  // key와 value가 같으면 생략가능 ex) writer: writer, >>> writer,
-                        } 
-                    }
-                })
+                            contents:content
+                        },password: password,
+                        boardId: router.query.boardId}
+                    })
+                    router.push(`/boards/viewboard/${router.query.boardId}`)
+                }catch(error){
+                    alert("error")
+                }
+            }    
+        }
+        else{
 
 
-                console.log(result.data.createBoard._id)
-                router.push(`/boards/viewboard/${result.data.createBoard._id}`)
-                alert("등록이 완료되었습니다!")
-            } 
-        }catch(error){
-            console.log("error")
-        }    
+            if(name === ""){
+                setNameError("작성자를 입력해주세요.")
+            }
+
+            if(password === ""){
+                setPasswordError("비밀번호를 입력해주세요.")
+            }
+
+            if(title === ""){
+                setTitleError("제목을 입력해주세요.")
+            }
+
+            if(content === ""){
+                setContentError("내용을 입력해주세요.")
+            }
+
+            try{
+                if(name !== "" && password !== "" && title !== "" && content !== ""){
+
+                    const result = await createBoard({
+                        variables: {
+                            createBoardInput: {
+                                writer:name,
+                                password:password,
+                                title:title,
+                                contents:content  // key와 value가 같으면 생략가능 ex) writer: writer, >>> writer,
+                            } 
+                        }
+                    })
+
+
+                    console.log(result.data.createBoard._id)
+                    router.push(`/boards/viewboard/${result.data.createBoard._id}`)
+                    alert("등록이 완료되었습니다!")
+                } 
+            }catch(error){
+                console.log("error")
+            }    
+        }
+    }
+
+    function onClickCancle() {
+        router.push(`/boards/viewboard/${router.query.boardId}`)
+    }
+
+    function onClickEditSubmit() {
+
+
     }
 
     return(
@@ -147,6 +195,9 @@ export default function BoardWrite() {
             contentError={contentError}
             check={check}
             buttonColor={buttonColor}
+            isEdit={props.isEdit}
+            onClickCancle={onClickCancle}
+            onClickEditSubmit={onClickEditSubmit}
         />
     )
 

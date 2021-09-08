@@ -147,3 +147,19 @@ export const Like = styled.img`
     width: 22px;
     height: 20px;
 `
+
+export const ButtonBox = styled.div`
+    margin-top: 80px;
+`
+
+export const ChangeButton = styled.button`
+    width: 180px;
+    height: 45px;
+    background-color: white;
+    border: 1px solid #F2F2F2;
+    margin-left: 24px;
+    cursor: pointer;
+    :hover{
+        background-color: #FFD600;
+    }
+`

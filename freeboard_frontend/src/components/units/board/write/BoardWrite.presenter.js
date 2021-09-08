@@ -21,7 +21,9 @@ import {
     ErrorMessage, 
     Neyoung,
     Youtube,
-    YoutubeRadio
+    YoutubeRadio,
+    Cancle,
+    Footer
 } from './BoardWrite.styled';
 
 export default function BoardWriteUI(props) {
@@ -29,7 +31,7 @@ export default function BoardWriteUI(props) {
     return(
         <Wrapper1>
             <Wrapper>
-                <Title>게시물 등록</Title>
+                <Title>{props.isEdit ? "게시물 수정" : "게시물 등록"}</Title>
                 <NamePw>
                     <div>작성자
                         <Star>*</Star>
@@ -83,7 +85,18 @@ export default function BoardWriteUI(props) {
                         <input type="radio" name="a"/> 사진
                     </Option>
                 </MainSetting>
-                <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>등록하기</Confirm>
+
+                {props.isEdit ? <Footer>
+                    <Cancle onClick={props.onClickCancle}>취소하기</Cancle>
+                    <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>수정하기</Confirm>
+                    </Footer> 
+                    : <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>등록하기</Confirm>
+                }
+
+
+                {/* <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>등록하기</Confirm>
+                <button>취소하기</button>
+                <Confirm onClick={props.check} buttonColor={props.buttonColor} disabled={!props.buttonColor}>수정하기</Confirm> */}
             </Wrapper>
         </Wrapper1>
     )

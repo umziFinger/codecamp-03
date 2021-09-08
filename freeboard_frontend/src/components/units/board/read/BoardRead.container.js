@@ -20,30 +20,24 @@ export default function BoardRead() {
             refetchQueries: [{ query: FETCH_BOARD }]
         })
         alert("삭제되었습니다.")
+        router.push(`/boards/list`)
 
     }
 
-    // async function onClickDelete() {
+    function onClickEdit() {
+        router.push(`/boards/viewboard/${router.query.boardId}/edit`)
+    }
 
-    //     const passwordInput = prompt("비밀번호 입력")
-
-    //     if(passwordInput == ){
-    //         await deleteBoard({
-    //                 variables: {boardId: router.query.boardId},
-    //                 refetchQueries: [{ query: FETCH_BOARD }]
-    //         })
-    //         alert("삭제되었습니다.")
-        
-    //     }else{
-    //         alert("error")
-    //     }
-
-    // }
+    function onClickMoveToList() {
+        router.push(`/boards/list`)
+    }
 
     return(
         <BoardReadUI
             data={data}
             onClickDelete={onClickDelete}
+            onClickEdit={onClickEdit}
+            onClickMoveToList={onClickMoveToList}
         />
     )
 

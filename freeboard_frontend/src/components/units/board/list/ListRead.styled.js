@@ -202,6 +202,9 @@ export const Row = styled.div`
     line-height: 52px;
     border-bottom: 1px solid gray;
     padding-right: 20px;
+    :hover{
+        background-color: #FFD600;
+    }
 `
 
 export const Column1 = styled.div`
@@ -223,6 +226,7 @@ export const Column2 = styled.div`
     align-items: center; */
     text-align: center;
     width: 70%;
+    cursor: pointer;
 `
 
 export const Column3 = styled.div`

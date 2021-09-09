@@ -36,7 +36,7 @@ export default function BoardWriteUI(props) {
                     <div>작성자
                         <Star>*</Star>
                         <br/>
-                        <Name type="text" placeholder="이름을 적어주세요." onChange={props.onChangeName}/>
+                        <Name type="text" placeholder="이름을 적어주세요." onChange={props.onChangeName} defaultValue={props.data?.fetchBoard.writer}/>
                         <ErrorMessage>{props.nameError}</ErrorMessage>
                     </div>
                     <div>비밀번호<br/>
@@ -45,11 +45,11 @@ export default function BoardWriteUI(props) {
                     </div>
                 </NamePw>    
                 <TitleContents>제목<br/>
-                    <Title2 type="text" placeholder="제목을 작성해주세요." onChange={props.onChangeTitle}/>
+                    <Title2 type="text" placeholder="제목을 작성해주세요." onChange={props.onChangeTitle} defaultValue={props.data?.fetchBoard.title}/>
                     <ErrorMessage>{props.itleError}</ErrorMessage>
                     <Neyoung>내용</Neyoung>
                     <br/>
-                    <Content placeholder="내용을 작성해주세요." onChange={props.onChangeContent}/>
+                    <Content placeholder="내용을 작성해주세요." onChange={props.onChangeContent} defaultValue={props.data?.fetchBoard.contents}/>
                     <ErrorMessage>{props.contentError}</ErrorMessage>
                 </TitleContents>
                 <Adress>주소

@@ -4,6 +4,9 @@ export default function ViewBoardPage() {
 
 
 
-    return<BoardRead/>
-
+    return(
+        <>
+            <BoardRead/>
+        </>
+    )
 }

@@ -5,7 +5,7 @@ export const Wrapper1 = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
-    padding-top: 717px;
+    /* padding-top: 717px; */
     padding-bottom: 280px;
 `
 

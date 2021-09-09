@@ -117,16 +117,22 @@ export default function BoardWrite(props) {
             if(name !== "" && password !== "" && title !== "" && content !== ""){
                 
                 try{
+
+                    const myVariables = {
+                        updateBoardInput:{
+                        },boardId:router.query.boardId
+                    }
+                    if(title) myVariables.updateBoardInput.title = title
+                    if(content) myVariables.updateBoardInput.contents = content
+                    if(password) myVariables.password = password
+
                     await updateBoard({
-                        variables:{updateBoardInput:{
-                            title:title,
-                            contents:content
-                        },password: password,
-                        boardId: router.query.boardId}
+                        variables:myVariables
                     })
                     router.push(`/boards/viewboard/${router.query.boardId}`)
-                }catch(error){
-                    alert("error")
+                    alert("수정이 완료되었습니다.")
+                }catch(err){
+                    alert(err.message)
                 }
             }    
         }
@@ -198,6 +204,7 @@ export default function BoardWrite(props) {
             isEdit={props.isEdit}
             onClickCancle={onClickCancle}
             onClickEditSubmit={onClickEditSubmit}
+            data={props.data}
         />
     )
 

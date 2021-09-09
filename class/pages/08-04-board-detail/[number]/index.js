@@ -18,9 +18,9 @@ export default function BoardDetailpage(){
         variables: { number: Number(router.query.number) }
     })
 
-    function onClickMoveToEdit(event) {
+    function onClickMoveToEdit() {
 
-        router.push(`/08-04-board-detail/${event.target.number}/edit`)
+        router.push(`/08-04-board-detail/${router.query.number}/edit`)
 
     }
 

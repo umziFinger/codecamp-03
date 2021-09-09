@@ -20,3 +20,4 @@ function solution(x, n) {
     return answer;
 } // x만큼 간격이 있는 n개의 숫자
 
+

@@ -18,7 +18,17 @@ function solution(s) {
 } //문자열 p와y의 개수
 
 function solution(s) {
-  const answer = s.split(" ").map((str) => {
-    return str.split("").map();
-  });
-}
+  var answer = "";
+
+  answer = s
+    .split(" ")
+    .map((el) =>
+      el
+        .split("")
+        .map((el, i) => (i % 2 ? el.toLowerCase() : el.toUpperCase()))
+        .join("")
+    )
+    .join(" ");
+
+  return answer;
+} //이상한 문자 만들기

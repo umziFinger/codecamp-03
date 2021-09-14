@@ -20,6 +20,8 @@ export default function BoardRead() {
   const [likeBoard] = useMutation(LIKE_BOARD);
   const [dislikeBoard] = useMutation(DISLIKE_BOARD);
 
+  const [isAddress, setIsAddress] = useState(false);
+
   async function onClickDelete() {
     await deleteBoard({
       variables: { boardId: router.query.boardId },
@@ -61,6 +63,10 @@ export default function BoardRead() {
     });
   }
 
+  function onClickAddressVisible() {
+    setIsAddress((prev) => !prev);
+  }
+
   return (
     <BoardReadUI
       data={data}
@@ -69,6 +75,8 @@ export default function BoardRead() {
       onClickMoveToList={onClickMoveToList}
       onClickLikeUp={onClickLikeUp}
       onClickDisLikeUp={onClickDisLikeUp}
+      onClickAddressVisible={onClickAddressVisible}
+      isAddress={isAddress}
     />
   );
 }

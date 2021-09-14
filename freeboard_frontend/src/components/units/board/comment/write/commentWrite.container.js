@@ -15,6 +15,7 @@ export default function CommentWrite(props) {
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
   const [rating, setRating] = useState(0);
+  const [contentsLength, setContentsLength] = useState(0);
 
   const [value, setValue] = useState(0);
 
@@ -39,28 +40,33 @@ export default function CommentWrite(props) {
 
   function onChangeCommentContents(event) {
     setContents(event.target.value);
+    setContentsLength(event.target.value.length);
   }
 
   async function onClickCreateComment() {
-    const result = await createBoardComment({
-      variables: {
-        createBoardCommentInput: {
-          writer,
-          password,
-          contents,
-          rating,
+    try {
+      const result = await createBoardComment({
+        variables: {
+          createBoardCommentInput: {
+            writer,
+            password,
+            contents,
+            rating,
+          },
+          boardId: String(router.query.boardId),
         },
-        boardId: String(router.query.boardId),
-      },
-      refetchQueries: [
-        {
-          query: FETCH_BOARD_COMMENTS,
-          variables: { boardId: router.query.boardId },
-        },
-      ],
-    });
-    console.log(result);
-    alert("댓글등록완료");
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
+      });
+      console.log(result);
+      alert("댓글등록완료");
+    } catch (err) {
+      alert(err.message);
+    }
   }
 
   async function onClickEditComment(event) {
@@ -97,6 +103,7 @@ export default function CommentWrite(props) {
       onClickEditComment={onClickEditComment}
       handleChange={handleChange}
       value={value}
+      contentsLength={contentsLength}
     />
   );
 }

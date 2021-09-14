@@ -21,6 +21,8 @@ import {
   Main,
   ChangeButton,
   ButtonBox,
+  Address,
+  AddressWrapper,
 } from "./BoardRead.styled";
 
 export default function BoardReadUI(props) {
@@ -28,6 +30,15 @@ export default function BoardReadUI(props) {
     <>
       <Main>
         <Wrapper>
+          <AddressWrapper>
+            {props.isAddress && (
+              <Address>
+                {props.data?.fetchBoard.boardAddress.address}
+                <br />
+                {props.data?.fetchBoard.boardAddress.addressDetail}
+              </Address>
+            )}
+          </AddressWrapper>
           <Header>
             <Profile>
               <HeaderLeft>
@@ -41,7 +52,10 @@ export default function BoardReadUI(props) {
               </HeaderLeft>
               <HeaderRight>
                 <Link src="/images/link.png" />
-                <Map src="/images/map.png" />
+                <Map
+                  src="/images/map.png"
+                  onClick={props.onClickAddressVisible}
+                />
               </HeaderRight>
             </Profile>
           </Header>
@@ -56,10 +70,9 @@ export default function BoardReadUI(props) {
           </Body>
           <Youtube>
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=iAFsmUMt0So&list=RDiAFsmUMt0So&start_radio=1"
+              url={props.data?.fetchBoard.youtubeUrl}
               width={486}
               height={240}
-              {...props}
             />
           </Youtube>
           <Footer>

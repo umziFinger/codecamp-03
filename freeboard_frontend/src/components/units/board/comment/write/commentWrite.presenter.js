@@ -52,7 +52,7 @@ export default function CommentWriteUI(props) {
               onChange={props.onChangeCommentContents}
             />
             <CommentLengthCheckBox>
-              <div>0/100</div>
+              <div>{props.contentsLength}/100</div>
               {!props.isEdit && (
                 <CommentButton onClick={props.onClickCreateComment}>
                   등록하기

@@ -18,10 +18,28 @@ export const Wrapper = styled.div`
   align-items: center;
   padding-left: 102px;
   padding-right: 102px;
-  padding-top: 88px;
+  padding-top: 20px;
   padding-bottom: 80px;
   border: none;
   box-shadow: 0px 0px 10px gray;
+`;
+
+export const AddressWrapper = styled.div`
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const Address = styled.div`
+  height: 64px;
+  background-color: grey;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: end;
+  color: white;
 `;
 
 export const Header = styled.div`

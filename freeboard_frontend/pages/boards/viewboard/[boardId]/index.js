@@ -16,7 +16,7 @@ export default function ViewBoardPage() {
       <BoardRead />
       <CommentWrite />
       {data?.fetchBoardComments.map((el) => (
-        <CommentRead data={data} el={el} />
+        <CommentRead key={el._id} data={data} el={el} />
       ))}
     </>
   );

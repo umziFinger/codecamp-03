@@ -10,6 +10,7 @@ export const Wrapper1 = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  /* position: absolute; */
   width: 1200px;
   /* height: 1847px; */
   /* background-color: red; */

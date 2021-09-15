@@ -1,5 +1,6 @@
 import { Rate } from "antd";
 import CommentWrite from "../write/commentWrite.container";
+import { Modal } from "antd";
 import {
   CommentMap,
   Row,
@@ -16,10 +17,19 @@ import {
   MapDate,
   Wrapper,
 } from "./commentRead.styled";
+import { Global } from "@emotion/react";
 
 export default function CommentReadUI(props) {
   return (
     <Wrapper>
+      <Modal
+        visible={props.modalVisible}
+        onCancel={props.closeModal}
+        onOk={props.onClickOk}
+      >
+        비밀번호 입력:
+        <input type="password" onChange={props.onChangeInputPassword} />
+      </Modal>
       {!props.isEdit && (
         <CommentMap>
           <Row key={props.el?._id}>

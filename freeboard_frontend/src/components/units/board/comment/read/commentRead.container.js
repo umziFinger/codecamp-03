@@ -10,20 +10,35 @@ import { useState } from "react";
 export default function CommentRead(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [inputPassword, setInputPassword] = useState("");
+  const [commentId, setCommentId] = useState("");
 
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
   const { data: commentdata } = useQuery(FETCH_BOARD_COMMENTS, {
     variables: { boardId: router.query.boardId },
   });
 
-  async function onClickCommentDelete(event) {
-    const commentPasswordInput = prompt("비밀번호를 입력해주세요.");
+  function onChangeInputPassword(event) {
+    setInputPassword(event.target.value);
+  }
 
+  async function onClickCommentDelete(event) {
+    setModalVisible(true);
+    setCommentId(event.target.id);
+  }
+
+  function closeModal() {
+    setModalVisible((prev) => !prev);
+  }
+
+  async function onClickOk() {
     try {
       await deleteBoardComment({
         variables: {
-          password: String(commentPasswordInput),
-          boardCommentId: event.target.id,
+          password: String(inputPassword),
+          boardCommentId: commentId,
         },
         refetchQueries: [
           {
@@ -32,7 +47,7 @@ export default function CommentRead(props) {
           },
         ],
       });
-      console.log(event.target.id);
+      console.log(commentId);
     } catch (err) {
       alert(err);
     }
@@ -50,6 +65,11 @@ export default function CommentRead(props) {
       isEdit={isEdit}
       el={props.el}
       setIsEdit={setIsEdit}
+      isOpen={isOpen}
+      modalVisible={modalVisible}
+      onChangeInputPassword={onChangeInputPassword}
+      closeModal={closeModal}
+      onClickOk={onClickOk}
     />
   );
 }

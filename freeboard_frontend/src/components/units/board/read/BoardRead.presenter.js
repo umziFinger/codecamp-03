@@ -33,9 +33,9 @@ export default function BoardReadUI(props) {
           <AddressWrapper>
             {props.isAddress && (
               <Address>
-                {props.data?.fetchBoard.boardAddress.address}
+                {props.data?.fetchBoard.boardAddress?.address}
                 <br />
-                {props.data?.fetchBoard.boardAddress.addressDetail}
+                {props.data?.fetchBoard.boardAddress?.addressDetail}
               </Address>
             )}
           </AddressWrapper>

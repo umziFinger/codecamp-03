@@ -2,15 +2,14 @@ import styled from "@emotion/styled";
 
 export const Wrapper1 = styled.div`
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   justify-content: center;
-  /* padding-top: 717px; */
-  padding-bottom: 280px;
+  padding-top: 100px;
+  /* padding-bottom: 4000px; */
 `;
 
 export const Wrapper = styled.div`
-  position: absolute;
   width: 1200px;
   /* height: 1847px; */
   /* background-color: red; */

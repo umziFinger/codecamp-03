@@ -202,6 +202,7 @@ export const Row = styled.div`
   :hover {
     background-color: #ffd600;
   }
+  cursor: pointer;
 `;
 
 export const Column1 = styled.div`
@@ -223,7 +224,6 @@ export const Column2 = styled.div`
     align-items: center; */
   text-align: center;
   width: 70%;
-  cursor: pointer;
 `;
 
 export const Column3 = styled.div`
@@ -248,6 +248,11 @@ export const Column4 = styled.div`
   /* margin-left: 80px; */
   text-align: center;
   width: 10%;
+`;
+
+export const Page = styled.span`
+  margin: 10px;
+  cursor: pointer;
 `;
 
 export const NewBoardButton = styled.div`

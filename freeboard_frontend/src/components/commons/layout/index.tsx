@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutHeader from "./header/LayoutHeader.container";
-import LayoutFooter from "./footer/LayoutFooter.container";
+import LayoutSidebar from "./sidebar/LayoutSidebar.container";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -12,11 +13,6 @@ const Wrapper = styled.div`
 const SidebarWrapper = styled.div`
   width: 1920px;
   display: flex;
-`;
-
-const Sidebar = styled.div`
-  background-color: yellow;
-  width: 300px;
 `;
 
 const Body = styled.div`
@@ -32,14 +28,12 @@ const Body = styled.div`
 export default function Layout(props) {
   return (
     <Wrapper>
-      {/* <Header>여기는 헤더영역입니다</Header> */}
       <LayoutHeader />
+      <LayoutBanner />
       <SidebarWrapper>
-        <Sidebar>여기는 사이드바영역입니다</Sidebar>
+        <LayoutSidebar />
         <Body>{props.children}</Body>
       </SidebarWrapper>
-      <LayoutFooter />
-      {/* <Footer>여기는 푸터영역입니다</Footer> */}
     </Wrapper>
   );
 }

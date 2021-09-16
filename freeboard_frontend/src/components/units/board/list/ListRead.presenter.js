@@ -31,6 +31,7 @@ import {
   MenuWriter,
   MenuDate,
   NewBoardButton,
+  Page,
 } from "./ListRead.styled";
 
 export default function ListReadUI(props) {
@@ -133,11 +134,9 @@ export default function ListReadUI(props) {
           </Row>
           {props.data?.fetchBoards
             .map((el, index) => (
-              <Row key={el._id}>
+              <Row id={el._id} key={el._id} onClick={props.moveToRead}>
                 <Column1>{index + 1}</Column1>
-                <Column2 id={el._id} onClick={props.moveToRead}>
-                  {el.title}
-                </Column2>
+                <Column2>{el.title}</Column2>
                 {/* 리스트에서 특정 보드로 이동할때 ID값을 받아와야 하는데 컨테이너에서 그냥 _id로 쓰면 읽지 못하므로 프레젠터에서 el._id로 불러온후 id값에 저장하고 그 id를 불러와야함 */}
                 <Column3>{el.writer}</Column3>
                 <Column4>{el.createdAt.slice(0, 10)}</Column4>
@@ -145,6 +144,22 @@ export default function ListReadUI(props) {
             ))
             .reverse()}
         </List>
+        <div>
+          <span onClick={props.onClickPrevPage}>Prev</span>
+          {new Array(10).fill(1).map(
+            (_, index) =>
+              props.startPage + index <= props.pageCount && (
+                <Page
+                  id={String(props.startPage + index)}
+                  key={props.startPage + index}
+                  onClick={props.onClickPage}
+                >
+                  {props.startPage + index}
+                </Page>
+              )
+          )}
+          <span onClick={props.onClickNextPage}>Next</span>
+        </div>
         <div>
           <div></div>
           <NewBoardButton onClick={props.moveToNew}>

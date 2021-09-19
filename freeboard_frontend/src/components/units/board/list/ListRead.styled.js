@@ -250,9 +250,14 @@ export const Column4 = styled.div`
   width: 10%;
 `;
 
+export const PageWrapper = styled.div`
+  margin-top: 50px;
+`;
+
 export const Page = styled.span`
   margin: 10px;
   cursor: pointer;
+  color: ${(props) => (props.colorChange ? "red" : "black")};
 `;
 
 export const NewBoardButton = styled.div`
@@ -269,4 +274,9 @@ export const NewBoardButton = styled.div`
   :hover {
     background-color: #ffd600;
   }
+`;
+
+export const NextPrevPage = styled.span`
+  cursor: pointer;
+  margin: 10px;
 `;

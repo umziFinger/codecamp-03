@@ -32,6 +32,8 @@ import {
   MenuDate,
   NewBoardButton,
   Page,
+  NextPrevPage,
+  PageWrapper,
 } from "./ListRead.styled";
 
 export default function ListReadUI(props) {
@@ -144,8 +146,8 @@ export default function ListReadUI(props) {
             ))
             .reverse()}
         </List>
-        <div>
-          <span onClick={props.onClickPrevPage}>Prev</span>
+        <PageWrapper>
+          <NextPrevPage onClick={props.onClickPrevPage}>Prev</NextPrevPage>
           {new Array(10).fill(1).map(
             (_, index) =>
               props.startPage + index <= props.pageCount && (
@@ -153,13 +155,14 @@ export default function ListReadUI(props) {
                   id={String(props.startPage + index)}
                   key={props.startPage + index}
                   onClick={props.onClickPage}
+                  colorChange={props.currentPage === props.startPage + index}
                 >
                   {props.startPage + index}
                 </Page>
               )
           )}
-          <span onClick={props.onClickNextPage}>Next</span>
-        </div>
+          <NextPrevPage onClick={props.onClickNextPage}>Next</NextPrevPage>
+        </PageWrapper>
         <div>
           <div></div>
           <NewBoardButton onClick={props.moveToNew}>

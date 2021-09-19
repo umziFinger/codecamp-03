@@ -93,6 +93,8 @@ export const AdressNumber = styled.div`
   height: 52px;
   border: 1px solid #c4c4c4;
   margin-top: 16px;
+  text-align: center;
+  padding: 10px;
 `;
 export const AdressButton = styled.button`
   width: 124px;
@@ -107,12 +109,14 @@ export const DetailAdress1 = styled.div`
   height: 52px;
   border: 1px solid #c4c4c4;
   margin-top: 16px;
+  padding: 10px;
 `;
 export const DetailAdress2 = styled.input`
   width: 996px;
   height: 52px;
   border: 1px solid #c4c4c4;
   margin-top: 16px;
+  padding: 10px;
 `;
 export const Youtube = styled.div`
   margin-top: 37px;

@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function ListRead() {
   const [startPage, setStartPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const { data, refetch } = useQuery(FETCH_BOARDS, {
     variables: { page: startPage },
   });
@@ -26,6 +27,7 @@ export default function ListRead() {
     refetch({
       page: Number(event.target.id),
     });
+    setCurrentPage(Number(event.target.id));
   }
 
   function onClickPrevPage() {
@@ -48,6 +50,7 @@ export default function ListRead() {
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}
       pageCount={pageCount}
+      currentPage={currentPage}
     />
   );
 }

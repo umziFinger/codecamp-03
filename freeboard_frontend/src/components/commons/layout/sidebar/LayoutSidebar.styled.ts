@@ -15,9 +15,9 @@ export const Menu = styled.div`
   font-size: 30px;
   text-align: center;
   font-weight: bold;
-  border-radius: 0px 10px 5px 0px;
+  border-radius: 0px 20px 5px 0px;
   cursor: pointer;
   :hover {
-    opacity: 0.9;
+    background-color: #1565c0;
   }
 `;

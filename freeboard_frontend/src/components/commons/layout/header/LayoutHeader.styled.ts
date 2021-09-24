@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   padding: 20px;
   align-items: center;
-  background-color: grey;
+  background-color: black;
 `;
 
 export const Logo = styled.div`

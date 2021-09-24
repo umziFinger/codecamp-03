@@ -31,3 +31,17 @@ function solution(n) {
     return -1;
   }
 } // 정수 제곱근 판별 method활용
+
+function solution(arr) {
+  var answer = [];
+
+  let smallest = arr[0];
+
+  arr.map((el) => (el < smallest ? (smallest = el) : smallest));
+
+  let newArr = arr.filter((el) => el !== smallest);
+
+  newArr.length ? (answer = newArr) : answer.push(-1);
+
+  return answer;
+} //제일 작은수 제거하기

@@ -3,7 +3,12 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   background-color: black;
   width: 300px;
-  height: 1500px;
+  margin-bottom: 100px;
+`;
+
+export const MenuWrapper = styled.div`
+  position: sticky;
+  top: 50px;
 `;
 
 export const Menu = styled.div`

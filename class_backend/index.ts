@@ -10,6 +10,13 @@ const typeDefs = gql`
     age: Int
   }
 
+  input UpdateBoardInput {
+    number: Int
+    writer: String
+    title: String
+    age: Int
+  }
+
   input CreateProductInput {
     seller: String
     name: String
@@ -17,10 +24,22 @@ const typeDefs = gql`
     price: Int
   }
 
+  input UpdateProductInput {
+    seller: String
+    name: String
+    detail: String
+    price: Int
+    number: Int
+  }
+
   type Return {
     message: String
     number: Int
   }
+
+  # input number {
+  #   number: Int
+  # }
 
   type Board {
     number: Int
@@ -38,30 +57,30 @@ const typeDefs = gql`
   }
 
   type Query {
-    fetchBoard: Board
+    fetchBoard(number: Int): Board
     fetchBoards: [Board]
-    fetchProduct: Product
+    fetchProduct(number: Int): Product
     fetchProducts: [Product]
   }
 
   type Mutation {
     # createBoard(writer: String, title: String, age: Int): Return
     createBoard(createBoardInput: CreateBoardInput): Return
-    updateBoard: Return
+    updateBoard(updateBoardInput: UpdateBoardInput): Return
     deleteBoard: Return
     createProduct(createProductInput: CreateProductInput): Return
-    updateProduct: Return
-    deleteProduct: Return
+    updateProduct(updateProductInput: UpdateProductInput): Return
+    deleteProduct(number: Int): Return
   }
 `;
 
 const resolvers = {
   Query: {
-    fetchBoard: async () => {
+    fetchBoard: async (_: any, args: any) => {
       //데이터베이스에서 해당하는 데이터 꺼내서 브라우저에 던져주기(응답주기)
 
       const result = await Board.findOne({
-        where: { number: 1, deletedAt: null },
+        where: { number: args.number, deletedAt: null },
       });
       return { writer: result?.writer, title: result?.title, age: result?.age };
     },
@@ -71,9 +90,9 @@ const resolvers = {
       return result;
     },
 
-    fetchProduct: async () => {
+    fetchProduct: async (_: any, args: any) => {
       const result = await Product.findOne({
-        where: { number: 2, deletedAt: null },
+        where: { number: args.number, deletedAt: null },
       });
       return {
         seller: result?.seller,
@@ -106,7 +125,10 @@ const resolvers = {
       return { message: "성공했습니다", number: result.identifiers[0].number };
     },
     updateBoard: async (_: any, args: any) => {
-      await Board.update({ number: 3 }, { writer: "영희" }); // 앞에 중괄호 : 조건 // 뒤에 중괄호 : 변경할 값
+      await Board.update(
+        { number: args.updateBoardInput.number },
+        { ...args.updateBoardInput }
+      ); // 앞에 중괄호 : 조건 // 뒤에 중괄호 : 변경할 값
       return { message: "수정완료" };
     },
     // 삭제를 할때 삭제하는것이 아니라 isDelete등의 state를 활용해 fetchBoards를 하면 isDelete가 false인 것만 조회 하도록 만듬
@@ -128,12 +150,15 @@ const resolvers = {
     },
 
     updateProduct: async (_: any, args: any) => {
-      await Product.update({ number: 4 }, { seller: "four" });
+      await Product.update(
+        { number: args.updateProductInput.number },
+        { ...args.updateProductInput }
+      );
       return { message: "상품수정완료" };
     },
 
-    deleteProduct: async () => {
-      await Product.update({ number: 12 }, { deletedAt: new Date() });
+    deleteProduct: async (_: any, args: any) => {
+      await Product.update({ number: args.number }, { deletedAt: new Date() });
       return { message: "삭제완료" };
     },
   },

@@ -22,6 +22,8 @@ export default function BoardRead() {
 
   const [isAddress, setIsAddress] = useState(false);
 
+  const [imageNumber, setImageNumber] = useState(0);
+
   async function onClickDelete() {
     await deleteBoard({
       variables: { boardId: router.query.boardId },
@@ -67,6 +69,12 @@ export default function BoardRead() {
     setIsAddress((prev) => !prev);
   }
 
+  function onClickImageChange() {
+    if (imageNumber === data.fetchBoard.images.length - 1) return;
+    setImageNumber((prev) => prev + 1);
+  }
+
+  console.log(data?.fetchBoard.images);
   return (
     <BoardReadUI
       data={data}
@@ -77,6 +85,8 @@ export default function BoardRead() {
       onClickDisLikeUp={onClickDisLikeUp}
       onClickAddressVisible={onClickAddressVisible}
       isAddress={isAddress}
+      onClickImageChange={onClickImageChange}
+      imageNumber={imageNumber}
     />
   );
 }

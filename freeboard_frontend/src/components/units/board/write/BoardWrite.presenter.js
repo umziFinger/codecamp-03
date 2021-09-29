@@ -1,5 +1,6 @@
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
+import Uploads01 from "../../../commons/uploads/01/uploads01.container";
 
 import {
   Wrapper1,
@@ -30,6 +31,8 @@ import {
   AdressSearchBox,
   DetailAdress1,
   DetailAdress2,
+  File,
+  MyPhoto,
 } from "./BoardWrite.styled";
 
 export default function BoardWriteUI(props) {
@@ -117,18 +120,50 @@ export default function BoardWriteUI(props) {
           <div>
             사진 첨부
             <GetPhoto>
-              <Photo>
-                <div>+</div>
-                <div>Upload</div>
-              </Photo>
-              <Photo>
-                <div>+</div>
-                <div>Upload</div>
-              </Photo>
-              <Photo>
-                <div>+</div>
-                <div>Upload</div>
-              </Photo>
+              {props.imageUrls.map((el, index) => (
+                <Uploads01
+                  key={`${el}_${index}`}
+                  index={index}
+                  onChangeFile={props.onChangeFile}
+                  imageUrls={el}
+                />
+              ))}
+
+              {/* {!props.imageUrl[0] ? (
+                <Photo onClick={props.onClickDiv}>
+                  <div>+</div>
+                  <div>Upload</div>
+                </Photo>
+              ) : (
+                <MyPhoto
+                  src={`https://storage.googleapis.com/${props.imageUrl[0]}`}
+                />
+              )}
+              <File
+                ref={props.fileRef}
+                type="file"
+                onChange={props.onChangeFile}
+              />
+              {!props.imageUrl[1] ? (
+                <Photo onClick={props.onClickDiv}>
+                  <div>+</div>
+                  <div>Upload</div>
+                </Photo>
+              ) : (
+                <MyPhoto
+                  src={`https://storage.googleapis.com/${props.imageUrl[1]}`}
+                />
+              )}
+              {!props.imageUrl[2] ? (
+                <Photo onClick={props.onClickDiv}>
+                  <div>+</div>
+                  <div>Upload</div>
+                </Photo>
+              ) : (
+                <MyPhoto
+                  src={`https://storage.googleapis.com/${props.imageUrl[2]}`}
+                />
+              )} */}
             </GetPhoto>
           </div>
           <MainSetting>

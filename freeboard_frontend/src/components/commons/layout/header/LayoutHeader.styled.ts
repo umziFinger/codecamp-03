@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  position: sticky;
+  top: 0px;
   width: 1920px;
   height: 100px;
   display: flex;
@@ -8,7 +10,13 @@ export const Wrapper = styled.div`
   padding: 20px;
   align-items: center;
   background-color: black;
+  z-index: 1;
 `;
+
+// export const StickyWrapper = styled.div`
+//   position: sticky;
+//   top: 0px;
+// `;
 
 export const Logo = styled.div`
   font-size: 30px;

@@ -23,6 +23,7 @@ import {
   ButtonBox,
   Address,
   AddressWrapper,
+  PictureImg,
 } from "./BoardRead.styled";
 
 export default function BoardReadUI(props) {
@@ -63,7 +64,14 @@ export default function BoardReadUI(props) {
             <Title>
               {props.data ? props.data.fetchBoard.title : "loading.."}
             </Title>
-            <Picture></Picture>
+            <Picture>
+              {props.data?.fetchBoard.images
+                ?.filter((el) => el !== "")
+                .map((el) => (
+                  <PictureImg src={`https://storage.googleapis.com/${el}`} />
+                ))}
+            </Picture>
+            {/* <button onClick={props.onClickImageChange}>다음사진</button> */}
             <Contents>
               {props.data ? props.data.fetchBoard.contents : "loading.."}
             </Contents>

@@ -16,9 +16,9 @@ export default function CommentRead(props) {
   const [commentId, setCommentId] = useState("");
 
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
-  const { data: commentdata } = useQuery(FETCH_BOARD_COMMENTS, {
-    variables: { boardId: router.query.boardId },
-  });
+  // const { data: commentdata } = useQuery(FETCH_BOARD_COMMENTS, {
+  //   variables: { boardId: router.query.boardId },
+  // });
 
   function onChangeInputPassword(event) {
     setInputPassword(event.target.value);
@@ -47,6 +47,7 @@ export default function CommentRead(props) {
           },
         ],
       });
+      setModalVisible((prev) => !prev);
       console.log(commentId);
     } catch (err) {
       alert(err);
@@ -61,7 +62,6 @@ export default function CommentRead(props) {
     <CommentReadUI
       onClickCommentEdit={onClickCommentEdit}
       onClickCommentDelete={onClickCommentDelete}
-      commentdata={commentdata}
       isEdit={isEdit}
       el={props.el}
       setIsEdit={setIsEdit}

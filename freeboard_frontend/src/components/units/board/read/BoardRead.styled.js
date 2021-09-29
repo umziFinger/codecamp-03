@@ -101,7 +101,7 @@ export const Map = styled.img`
 
 export const Body = styled.div`
   width: 996px;
-  height: 710px;
+  /* height: 710px; */
   /* background-color: yellow; */
   display: flex;
   flex-direction: column;
@@ -117,9 +117,19 @@ export const Title = styled.div`
 
 export const Picture = styled.div`
   width: 996px;
-  height: 480px;
+  /* height: 480px; */
   background-color: #f2f2f2;
   margin-top: 40px;
+  /* padding: 20px; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+`;
+
+export const PictureImg = styled.img`
+  width: 956px;
+  height: 480px;
+  margin: 20px 20px auto;
 `;
 
 export const Contents = styled.div`

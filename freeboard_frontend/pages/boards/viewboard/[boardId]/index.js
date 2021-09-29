@@ -31,11 +31,14 @@ export default function ViewBoardPage() {
     <>
       <BoardRead />
       <CommentWrite />
-      <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
+      {data?.fetchBoardComments.map((el) => (
+        <CommentRead key={el._id} data={data} el={el} />
+      ))}
+      {/* <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
         {data?.fetchBoardComments.map((el) => (
           <CommentRead key={el._id} data={data} el={el} />
         ))}
-      </InfiniteScroll>
+      </InfiniteScroll> */}
     </>
   );
 }

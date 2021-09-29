@@ -32,7 +32,7 @@ export default function CommentReadUI(props) {
       </Modal>
       {!props.isEdit && (
         <CommentMap>
-          <Row key={props.el?._id}>
+          <Row>
             <CommentProfileImageBox>
               <CommentProfileImage src="/images/profile.png" />
             </CommentProfileImageBox>
@@ -65,7 +65,6 @@ export default function CommentReadUI(props) {
       {props.isEdit && (
         <CommentWrite
           isEdit={props.isEdit}
-          commentdata={props.commentdata}
           el={props.el}
           setIsEdit={props.setIsEdit}
         />

@@ -1,9 +1,15 @@
 import "antd/dist/antd.css";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  InMemoryCache,
+  ApolloLink,
+} from "@apollo/client";
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { initializeApp } from "firebase/app";
+import { createUploadLink } from "apollo-upload-client";
 
 export const firebaseApp = initializeApp({
   apiKey: "AIzaSyC5uPKSGi71y_08KWcofZ-DsXo4DdojtZ8",
@@ -16,8 +22,12 @@ export const firebaseApp = initializeApp({
 });
 
 function MyApp({ Component, pageProps }) {
-  const client = new ApolloClient({
+  const uploadLink = createUploadLink({
     uri: "http://backend03.codebootcamp.co.kr/graphql",
+  });
+
+  const client = new ApolloClient({
+    link: ApolloLink.from([uploadLink]), // 배열형식으로 원하는 요소만 추가하여 사용
     cache: new InMemoryCache(),
   });
 

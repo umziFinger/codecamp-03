@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const MenuWrapper = styled.div`
   position: sticky;
-  top: 50px;
+  top: 500px;
 `;
 
 export const Menu = styled.div`

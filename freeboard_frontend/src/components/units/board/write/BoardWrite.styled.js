@@ -147,6 +147,7 @@ export const Photo = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #bdbdbd;
+  cursor: pointer;
 `;
 export const MainSetting = styled.div`
   width: 159px;
@@ -184,4 +185,19 @@ export const Cancle = styled.button`
 export const Footer = styled.div`
   display: flex;
   margin-top: 80px;
+`;
+
+export const File = styled.input`
+  display: none;
+`;
+
+export const MyPhoto = styled.img`
+  width: 78px;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #bdbdbd;
+  cursor: pointer;
 `;

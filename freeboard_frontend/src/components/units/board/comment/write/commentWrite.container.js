@@ -63,6 +63,7 @@ export default function CommentWrite(props) {
         ],
       });
       console.log(result);
+      // alert(router.query.boardId);
       alert("댓글등록완료");
     } catch (err) {
       alert(err.message);
@@ -70,24 +71,26 @@ export default function CommentWrite(props) {
   }
 
   async function onClickEditComment(event) {
-    const result = await updateBoardComment({
-      variables: {
-        updateBoardCommentInput: { contents: contents, rating },
-        password,
-        boardCommentId: String(event.target.id),
-      },
-      refetchQueries: [
-        {
-          query: FETCH_BOARD_COMMENTS,
-          variables: { boardId: router.query.boardId },
+    try {
+      const result = await updateBoardComment({
+        variables: {
+          updateBoardCommentInput: { contents: contents, rating },
+          password,
+          boardCommentId: String(event.target.id),
         },
-      ],
-    });
-    alert("댓글 수정완료");
-    {
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.boardId },
+          },
+        ],
+      });
+      console.log(result);
+      alert("댓글 수정완료");
       props.setIsEdit(false);
+    } catch (error) {
+      console.log(error);
     }
-    console.log(result);
   }
 
   return (
@@ -98,7 +101,6 @@ export default function CommentWrite(props) {
       onChangeCommentWriter={onChangeCommentWriter}
       onClickCreateComment={onClickCreateComment}
       data={data}
-      comment={props.commentdata}
       isEdit={props.isEdit}
       onClickEditComment={onClickEditComment}
       handleChange={handleChange}

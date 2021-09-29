@@ -1,12 +1,14 @@
-import { Login, Logo, Wrapper } from "./LayoutHeader.styled";
+import { Login, Logo, StickyWrapper, Wrapper } from "./LayoutHeader.styled";
 
 export default function LayoutHeaderUI() {
   return (
     <Wrapper>
-      <Logo>LOGO</Logo>
       <div>
-        <Login>로그인 | </Login>
-        <Login>회원가입</Login>
+        <Logo>LOGO</Logo>
+        <div>
+          <Login>로그인 | </Login>
+          <Login>회원가입</Login>
+        </div>
       </div>
     </Wrapper>
   );

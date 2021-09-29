@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardWriteUI from "./BoardWrite.presenter";
 
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 
 export default function BoardWrite(props) {
   const router = useRouter();
+  // const fileRef = useRef();
 
   const [buttonColor, setButtonColor] = useState(false); // 다작성되면 버튼색 바꾸기위한 State
 
@@ -35,8 +36,11 @@ export default function BoardWrite(props) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+  const [imageUrls, setImageUrls] = useState(["", "", ""]);
+
   const [createBoard] = useMutation(CREATE_BOARD); //mutation을 사용하기 위한 변수(createBoard)와 위에서 할당한 createBoard를 CREATE_BOARD로 불러옴
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  // const [uploadFile] = useMutation(UPLOAD_FILE);
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -191,6 +195,7 @@ export default function BoardWrite(props) {
                   address: myAddress,
                   addressDetail: addressDetail,
                 },
+                images: [...imageUrls],
               },
             },
           });
@@ -232,6 +237,50 @@ export default function BoardWrite(props) {
     } //
   }
 
+  function onChangeFile(imageUrl, index) {
+    const newFileUrls = [...imageUrls];
+    newFileUrls[index] = imageUrl;
+    console.log(newFileUrls);
+    setImageUrls(newFileUrls);
+  }
+
+  // async function onChangeFile(event) {
+  //   const myFile = event.target.files[0];
+  //   console.log(myFile);
+
+  //   if (!myFile) {
+  //     alert("파일이 없습니다");
+  //     return;
+  //   }
+
+  //   if (myFile.size > 5 * 1024 * 1024) {
+  //     alert("파일 용량이 너무 큽니다");
+  //     return;
+  //   }
+
+  //   if (myFile.size > 5 * 1024 * 1024) {
+  //     alert("파일 용량이 너무 큽니다");
+  //     return;
+  //   }
+
+  //   if (!myFile.type.includes("jpeg") && !myFile.type.includes("png")) {
+  //     alert("jpeg 또는 png만 업로드 가능합니다");
+  //     return;
+  //   }
+
+  //   const result = await uploadFile({
+  //     variables: {
+  //       file: myFile,
+  //     },
+  //   });
+  //   console.log(result.data.uploadFile.url);
+  //   setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
+  // }
+  // console.log(imageUrl);
+
+  // function onClickDiv() {
+  //   fileRef.current?.click();
+  // }
   return (
     <BoardWriteUI
       onChangeName={onChangeName}
@@ -256,6 +305,11 @@ export default function BoardWrite(props) {
       modalVisible={modalVisible}
       closeModal={closeModal}
       onChangeAddressDetail={onChangeAddressDetail}
+      // fileRef={fileRef}
+      onChangeFile={onChangeFile}
+      // onClickDiv={onClickDiv}
+      imageUrls={imageUrls}
+      onChangeFile={onChangeFile}
     />
   );
 }

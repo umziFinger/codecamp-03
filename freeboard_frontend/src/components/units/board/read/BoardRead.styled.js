@@ -118,7 +118,7 @@ export const Title = styled.div`
 export const Picture = styled.div`
   width: 996px;
   /* height: 480px; */
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   margin-top: 40px;
   /* padding: 20px; */
   /* display: flex;

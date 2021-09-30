@@ -36,7 +36,6 @@ import {
 } from "./BoardWrite.styled";
 
 export default function BoardWriteUI(props) {
-  console.log(props.myZipcode);
   return (
     <>
       <Wrapper1>
@@ -120,12 +119,11 @@ export default function BoardWriteUI(props) {
           <div>
             사진 첨부
             <GetPhoto>
-              {props.imageUrls.map((el, index) => (
+              {new Array(3).fill(1).map((el, index) => (
                 <Uploads01
                   key={`${el}_${index}`}
                   index={index}
                   onChangeFile={props.onChangeFile}
-                  imageUrls={el}
                 />
               ))}
 

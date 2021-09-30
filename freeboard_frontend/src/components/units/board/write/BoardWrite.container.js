@@ -36,11 +36,11 @@ export default function BoardWrite(props) {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [imageUrls, setImageUrls] = useState(["", "", ""]);
-
   const [createBoard] = useMutation(CREATE_BOARD); //mutation을 사용하기 위한 변수(createBoard)와 위에서 할당한 createBoard를 CREATE_BOARD로 불러옴
   const [updateBoard] = useMutation(UPDATE_BOARD);
-  // const [uploadFile] = useMutation(UPLOAD_FILE);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+
+  const [files, setFiles] = useState([null, null, null]);
 
   function onChangeName(event) {
     setName(event.target.value);
@@ -179,9 +179,14 @@ export default function BoardWrite(props) {
       if (content === "") {
         setContentError("내용을 입력해주세요.");
       }
+      if (name !== "" && password !== "" && title !== "" && content !== "") {
+        try {
+          const uploadFiles = files
+            .filter((el) => el)
+            .map((el) => uploadFile({ variables: { file: el } }));
+          const results = await Promise.all(uploadFiles);
+          const imageUrl = results.map((el) => el.data.uploadFile.url);
 
-      try {
-        if (name !== "" && password !== "" && title !== "" && content !== "") {
           const result = await createBoard({
             variables: {
               createBoardInput: {
@@ -195,7 +200,7 @@ export default function BoardWrite(props) {
                   address: myAddress,
                   addressDetail: addressDetail,
                 },
-                images: [...imageUrls],
+                images: [...imageUrl],
               },
             },
           });
@@ -204,9 +209,9 @@ export default function BoardWrite(props) {
           setId(result.data.createBoard._id);
           setModalVisible((prev) => !prev); // modal창 띄우기
           //이자리에서 router.push를 해주면 modal창이 보이기 전에 넘어가버림 //그래서 router.push를 밑으로 내림
+        } catch (error) {
+          console.log(error.message);
         }
-      } catch (error) {
-        console.log("error");
       }
     }
   }
@@ -237,11 +242,10 @@ export default function BoardWrite(props) {
     } //
   }
 
-  function onChangeFile(imageUrl, index) {
-    const newFileUrls = [...imageUrls];
-    newFileUrls[index] = imageUrl;
-    console.log(newFileUrls);
-    setImageUrls(newFileUrls);
+  function onChangeFile(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
   }
 
   // async function onChangeFile(event) {
@@ -305,10 +309,6 @@ export default function BoardWrite(props) {
       modalVisible={modalVisible}
       closeModal={closeModal}
       onChangeAddressDetail={onChangeAddressDetail}
-      // fileRef={fileRef}
-      onChangeFile={onChangeFile}
-      // onClickDiv={onClickDiv}
-      imageUrls={imageUrls}
       onChangeFile={onChangeFile}
     />
   );

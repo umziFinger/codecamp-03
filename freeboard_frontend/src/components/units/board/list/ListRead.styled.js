@@ -102,6 +102,7 @@ export const Search = styled.div`
   justify-content: space-between;
   margin-top: 80px;
 `;
+
 export const SearchTitle = styled.div`
   width: 776px;
   height: 52px;
@@ -118,6 +119,7 @@ export const SearchTitle = styled.div`
 export const InputTitle = styled.input`
   margin-left: 10px;
   border: none;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0);
 `;
 
@@ -137,6 +139,7 @@ export const Button = styled.button`
   background-color: black;
   color: white;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 export const List = styled.div`
@@ -279,4 +282,9 @@ export const NewBoardButton = styled.div`
 export const NextPrevPage = styled.span`
   cursor: pointer;
   margin: 10px;
+`;
+
+export const Keyword = styled.span`
+  color: ${(props) => (props.isMatched ? "red" : "black")};
+  background-color: ${(props) => (props.isMatched ? "#ffd600" : "none")};
 `;

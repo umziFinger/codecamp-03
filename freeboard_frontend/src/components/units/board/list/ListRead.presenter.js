@@ -34,6 +34,7 @@ import {
   Page,
   NextPrevPage,
   PageWrapper,
+  Keyword,
 } from "./ListRead.styled";
 
 export default function ListReadUI(props) {
@@ -122,10 +123,14 @@ export default function ListReadUI(props) {
         <Search>
           <SearchTitle>
             <img src="/images/돋보기.png" />
-            <InputTitle type="text" placeholder="제목을 검색해주세요." />
+            <InputTitle
+              type="text"
+              placeholder="제목을 검색해주세요."
+              onChange={props.onChangeSearch}
+            />
           </SearchTitle>
           <InputDate type="text" placeholder="YYYY.MM.DD ~ YYYY.MM.DD" />
-          <Button>검색하기</Button>
+          <Button onClick={props.onClickSearch}>검색하기</Button>
         </Search>
         <List>
           <Row>
@@ -138,7 +143,14 @@ export default function ListReadUI(props) {
             .map((el, index) => (
               <Row id={el._id} key={el._id} onClick={props.moveToRead}>
                 <Column1>{index + 1}</Column1>
-                <Column2>{el.title}</Column2>
+                <Column2>
+                  {el.title
+                    .replaceAll(props.keyword, `$${props.keyword}$`)
+                    .split("$")
+                    .map((el) => (
+                      <Keyword isMatched={props.keyword === el}>{el}</Keyword>
+                    ))}
+                </Column2>
                 {/* 리스트에서 특정 보드로 이동할때 ID값을 받아와야 하는데 컨테이너에서 그냥 _id로 쓰면 읽지 못하므로 프레젠터에서 el._id로 불러온후 id값에 저장하고 그 id를 불러와야함 */}
                 <Column3>{el.writer}</Column3>
                 <Column4>{el.createdAt.slice(0, 10)}</Column4>

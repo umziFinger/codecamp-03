@@ -5,7 +5,7 @@ export const globalStyles = css`
     margin: 0;
     box-sizing: border-box;
     font-size: 50px;
-    background-color: green;
+    /* background-color: green; */
   }
 
   @font-face {

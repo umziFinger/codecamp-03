@@ -24,6 +24,11 @@ export default function LayoutSidebar() {
     setIsMarket((prev) => !prev);
   }
 
+  function onClickProductList() {
+    router.push(`/market/list`);
+    setIsMarket((prev) => !prev);
+  }
+
   return (
     <LayoutSidebarUI
       onClickList={onClickList}
@@ -31,6 +36,7 @@ export default function LayoutSidebar() {
       onClickMarket={onClickMarket}
       onClickCreateProduct={onClickCreateProduct}
       isMarket={isMarket}
+      onClickProductList={onClickProductList}
     />
   );
 }

@@ -10,7 +10,7 @@ export default function LayoutSidebarUI(props) {
         {props.isMarket && (
           <>
             <SubMenu onClick={props.onClickCreateProduct}>상품 등록</SubMenu>
-            <SubMenu>상품 목록</SubMenu>
+            <SubMenu onClick={props.onClickProductList}>상품 목록</SubMenu>
           </>
         )}
       </MenuWrapper>

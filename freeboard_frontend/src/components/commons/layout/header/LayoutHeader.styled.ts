@@ -46,3 +46,9 @@ export const ProfileImg = styled.img`
 export const ProfileName = styled.div`
   margin: 15px;
 `;
+
+export const Logout = styled.img`
+  color: none;
+  width: 30px;
+  cursor: pointer;
+`;

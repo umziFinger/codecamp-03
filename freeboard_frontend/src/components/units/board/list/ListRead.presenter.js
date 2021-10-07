@@ -43,82 +43,31 @@ export default function ListReadUI(props) {
       <Wrapper>
         <Title>베스트 게시글</Title>
         <Top>
-          <BestContents>
-            <Img src="/images/풀때기.png" />
-            <Info>
-              <InfoTitle>게시물 제목입니다.</InfoTitle>
-              <InfoBottom>
-                <InfoBottomLeft>
-                  <Profile>
-                    <ProfileImg src="/images/profile.png" />
-                    <ProfileName>노원두</ProfileName>
-                  </Profile>
-                  <Date>Date:2021.02.18</Date>
-                </InfoBottomLeft>
-                <InfoBottomRight>
-                  <Like src="/images/like.png" />
-                  <div>356</div>
-                </InfoBottomRight>
-              </InfoBottom>
-            </Info>
-          </BestContents>
-          <BestContents>
-            <Img src="/images/핸드폰.png" />
-            <Info>
-              <InfoTitle>게시물 제목입니다.</InfoTitle>
-              <InfoBottom>
-                <InfoBottomLeft>
-                  <Profile>
-                    <ProfileImg src="/images/profile.png" />
-                    <ProfileName>노원두</ProfileName>
-                  </Profile>
-                  <Date>Date:2021.02.18</Date>
-                </InfoBottomLeft>
-                <InfoBottomRight>
-                  <Like src="/images/like.png" />
-                  <div>356</div>
-                </InfoBottomRight>
-              </InfoBottom>
-            </Info>
-          </BestContents>
-          <BestContents>
-            <Img src="/images/발표.png" />
-            <Info>
-              <InfoTitle>게시물 제목입니다.</InfoTitle>
-              <InfoBottom>
-                <InfoBottomLeft>
-                  <Profile>
-                    <ProfileImg src="/images/profile.png" />
-                    <ProfileName>노원두</ProfileName>
-                  </Profile>
-                  <Date>Date:2021.02.18</Date>
-                </InfoBottomLeft>
-                <InfoBottomRight>
-                  <Like src="/images/like.png" />
-                  <div>356</div>
-                </InfoBottomRight>
-              </InfoBottom>
-            </Info>
-          </BestContents>
-          <BestContents>
-            <Img src="/images/화로.png" />
-            <Info>
-              <InfoTitle>게시물 제목입니다.</InfoTitle>
-              <InfoBottom>
-                <InfoBottomLeft>
-                  <Profile>
-                    <ProfileImg src="/images/profile.png" />
-                    <ProfileName>노원두</ProfileName>
-                  </Profile>
-                  <Date>Date:2021.02.18</Date>
-                </InfoBottomLeft>
-                <InfoBottomRight>
-                  <Like src="/images/like.png" />
-                  <div>356</div>
-                </InfoBottomRight>
-              </InfoBottom>
-            </Info>
-          </BestContents>
+          {props.bestBoardData?.fetchBoardsOfTheBest.map((el, index) => (
+            <BestContents
+              key={el._id}
+              id={el._id}
+              onClick={props.onClickBestBoard}
+            >
+              <Img src="/images/풀때기.png" />
+              <Info>
+                <InfoTitle>{el.title}</InfoTitle>
+                <InfoBottom>
+                  <InfoBottomLeft>
+                    <Profile>
+                      <ProfileImg src="/images/profile.png" />
+                      <ProfileName>{el.writer}</ProfileName>
+                    </Profile>
+                    <Date>{el.createdAt.slice(0, 10)}</Date>
+                  </InfoBottomLeft>
+                  <InfoBottomRight>
+                    <Like src="/images/like.png" />
+                    <div>{el.likeCount}</div>
+                  </InfoBottomRight>
+                </InfoBottom>
+              </Info>
+            </BestContents>
+          ))}
         </Top>
         <Search>
           <SearchTitle>

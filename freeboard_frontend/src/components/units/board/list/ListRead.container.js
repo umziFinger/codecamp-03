@@ -1,4 +1,8 @@
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./ListRead.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_BOARDS_COUNT,
+  FETCH_BOARDS_OF_THE_BEST,
+} from "./ListRead.queries";
 import ListReadUI from "./ListRead.presenter";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -15,6 +19,7 @@ export default function ListRead() {
     variables: { page: startPage },
   });
   const { data: boardsCountData } = useQuery(FETCH_BOARDS_COUNT);
+  const { data: bestBoardData } = useQuery(FETCH_BOARDS_OF_THE_BEST);
 
   const pageCount = Math.ceil(boardsCountData?.fetchBoardsCount / 10);
   const router = useRouter();
@@ -62,6 +67,10 @@ export default function ListRead() {
     // setKeyword(search);
   }
 
+  function onClickBestBoard(event) {
+    router.push(`/boards/viewboard/${event.currentTarget.id}`);
+  }
+
   return (
     <ListReadUI
       data={data}
@@ -76,6 +85,8 @@ export default function ListRead() {
       onChangeSearch={onChangeSearch}
       onClickSearch={onClickSearch}
       keyword={keyword}
+      bestBoardData={bestBoardData}
+      onClickBestBoard={onClickBestBoard}
     />
   );
 }

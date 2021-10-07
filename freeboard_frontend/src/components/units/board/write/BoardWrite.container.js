@@ -136,32 +136,77 @@ export default function BoardWrite(props) {
         setContentError("내용을 입력해주세요.");
       }
       // isEdit이 true일때, 즉 수정창에서 수정하기 버튼을 눌렀을때 빈칸이 없는지 확인하는 함수
-      if (name !== "" && password !== "" && title !== "" && content !== "") {
-        try {
-          const myVariables = {
-            updateBoardInput: { boardAddress: {} },
-            boardId: router.query.boardId,
-          };
-          if (title) myVariables.updateBoardInput.title = title;
-          if (content) myVariables.updateBoardInput.contents = content;
-          if (password) myVariables.password = password;
-          if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
-          if (myZipcode)
-            myVariables.updateBoardInput.boardAddress.zipcode = myZipcode;
-          if (myAddress)
-            myVariables.updateBoardInput.boardAddress.address = myAddress;
-          if (addressDetail)
-            myVariables.updateBoardInput.boardAddress.addressDetail =
-              addressDetail;
 
-          await updateBoard({
-            variables: myVariables,
-          });
-          setModalVisible((prev) => !prev);
-        } catch (err) {
-          alert(err.message);
-        } //수정하기
+      if (
+        !title &&
+        false &&
+        !youtubeUrl &&
+        !myZipcode &&
+        !myAddress &&
+        !addressDetail
+      ) {
+        alert("수정된 내용이 없습니다.");
+        return;
       }
+      const myUpdateboardInput = {};
+      if (title) myUpdateboardInput.title = title;
+      if (content) myUpdateboardInput.contents = content;
+      if (youtubeUrl) myUpdateboardInput.youtubeUrl = youtubeUrl;
+      if (myZipcode || myAddress || addressDetail) {
+        myUpdateboardInput.boardAddress = {};
+        if (myZipcode) myUpdateboardInput.boardAddress.zipcode = myZipcode;
+        if (myAddress) myUpdateboardInput.boardAddress.address = myAddress;
+        if (addressDetail)
+          myUpdateboardInput.boardAddress.addressDetail = addressDetail;
+      }
+
+      // if (name !== "" && password !== "" && title !== "" && content !== "") {
+      //   const myVariables = {
+      //     updateBoardInput: { boardAddress: {} },
+      //     boardId: router.query.boardId,
+      //   };
+      //   if (title) myVariables.updateBoardInput.title = title;
+      //   if (content) myVariables.updateBoardInput.contents = content;
+      //   if (password) myVariables.password = password;
+      //   if (youtubeUrl) myVariables.updateBoardInput.youtubeUrl = youtubeUrl;
+      //   if (myZipcode)
+      //     myVariables.updateBoardInput.boardAddress.zipcode = myZipcode;
+      //   if (myAddress)
+      //     myVariables.updateBoardInput.boardAddress.address = myAddress;
+      //   if (addressDetail)
+      //     myVariables.updateBoardInput.boardAddress.addressDetail =
+      //       addressDetail;
+
+      const uploadFiles = files
+        .filter((el) => el)
+        .map((el) => uploadFile({ variables: { file: el } }));
+      const results = await Promise.all(uploadFiles);
+      const nextImages = results.map((el) => el.data.uploadFile.url || "");
+      myUpdateboardInput.images = nextImages;
+
+      if (props.data?.fetchBoard.images.length) {
+        const prevImages = [...props.data?.fetchBoard.images];
+        myUpdateboardInput.images = prevImages.map(
+          (el, index) => nextImages[index] || el
+        );
+      } else {
+        myUpdateboardInput.images = nextImages;
+      }
+
+      try {
+        await updateBoard({
+          variables: {
+            boardId: router.query.boardId,
+            password: password,
+            updateBoardInput: myUpdateboardInput,
+          },
+        });
+        setModalVisible((prev) => !prev);
+        // router.push(`/boards/viewboard/${result.data.updateBoard._id}`);
+      } catch (err) {
+        alert(err.message);
+        console.log(err);
+      } //수정하기
     } else {
       // isEdit이 false일때, 즉 등록창에서 등록버튼을 눌렀을때 빈칸없는지 확인하는 함수
       if (name === "") {
@@ -185,7 +230,7 @@ export default function BoardWrite(props) {
             .filter((el) => el)
             .map((el) => uploadFile({ variables: { file: el } }));
           const results = await Promise.all(uploadFiles);
-          const imageUrl = results.map((el) => el.data.uploadFile.url);
+          const imageUrl = results.map((el) => el?.data.uploadFile.url || "");
 
           const result = await createBoard({
             variables: {
@@ -200,7 +245,7 @@ export default function BoardWrite(props) {
                   address: myAddress,
                   addressDetail: addressDetail,
                 },
-                images: [...imageUrl],
+                images: imageUrl,
               },
             },
           });

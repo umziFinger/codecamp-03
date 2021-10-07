@@ -9,7 +9,7 @@ import InfiniteScroll from "react-infinite-scroller";
 export default function ViewBoardPage() {
   const router = useRouter();
   const { data, fetchMore } = useQuery(FETCH_BOARD_COMMENTS, {
-    variables: { page: 1, boardId: router.query.boardId },
+    variables: { boardId: router.query.boardId },
   });
 
   function onLoadMore() {
@@ -31,14 +31,11 @@ export default function ViewBoardPage() {
     <>
       <BoardRead />
       <CommentWrite />
-      {data?.fetchBoardComments.map((el) => (
-        <CommentRead key={el._id} data={data} el={el} />
-      ))}
-      {/* <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
+      <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
         {data?.fetchBoardComments.map((el) => (
           <CommentRead key={el._id} data={data} el={el} />
         ))}
-      </InfiniteScroll> */}
+      </InfiniteScroll>
     </>
   );
 }

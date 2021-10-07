@@ -17,16 +17,16 @@ export default function LayoutBannerUI() {
       <div>
         <Slider {...settings}>
           <div>
-            <Image src="/images/spring.png" />
+            <Image src="https://mongqiza.com/data/file/budongsan_06_toji/thumb-978202226_lBSPg3jf_dc4d963463a47b2245a09f93cc95cf45195ed73b_600x354.png" />
           </div>
           <div>
-            <Image src="/images/summer.png" />
+            <Image src="https://menu.mt.co.kr/moneyweek/thumb/2021/07/19/06/2021071914588074820_1.jpg" />
           </div>
           <div>
-            <Image src="/images/fall.png" />
+            <Image src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/02/a0002070/img/ko/a0002070_parts_5ad9770e2e171.jpg?20201222154846&q=80&rw=686&rh=490" />
           </div>
           <div>
-            <Image src="/images/winter.png" />
+            <Image src="https://www.rihgaroyalgran-okinawa.co.jp/kr/dining/img/bar/ph_01.jpg" />
           </div>
         </Slider>
       </div>

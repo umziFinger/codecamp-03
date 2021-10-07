@@ -3,8 +3,14 @@ import { File, MyPhoto, Photo } from "./uploads01.styles";
 export default function Uploads01UI(props) {
   return (
     <>
-      {props.imageUrl ? (
-        <MyPhoto src={props.imageUrl} onClick={props.onClickDiv} />
+      {props.imageUrl || props.defaultFile ? (
+        <MyPhoto
+          src={
+            props.imageUrl ||
+            `https://storage.googleapis.com/${props.defaultFile}`
+          }
+          onClick={props.onClickDiv}
+        />
       ) : (
         <Photo onClick={props.onClickDiv}>
           <div>+</div>

@@ -10,6 +10,7 @@ const FETCH_BOARD = gql`
       contents
       _id
       youtubeUrl
+      images
     }
   }
 `;

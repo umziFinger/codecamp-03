@@ -124,6 +124,7 @@ export default function BoardWriteUI(props) {
                   key={`${el}_${index}`}
                   index={index}
                   onChangeFile={props.onChangeFile}
+                  defaultFile={props.data?.fetchBoard.images?.[index]}
                 />
               ))}
 

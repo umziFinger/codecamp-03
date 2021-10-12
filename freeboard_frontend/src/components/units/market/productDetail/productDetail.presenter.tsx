@@ -18,11 +18,24 @@ import {
   ProfileIcon,
   Remarks,
   Seller,
+  SliderImage,
+  SliderWrapper,
   Title,
   ToBuy,
   ToList,
   Wrapper,
 } from "./productDetail.styles";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+const settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  speed: 500,
+};
 
 export default function ProductDetailUI(props) {
   return (
@@ -54,7 +67,20 @@ export default function ProductDetailUI(props) {
             </Like>
           </Title>
           <Price>{props.data?.fetchUseditem.price}</Price>
-          <Carousel></Carousel>
+          <SliderWrapper>
+            <Slider {...settings}>
+              <div>
+                <SliderImage
+                  src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
+                />
+              </div>
+              <div>
+                <SliderImage
+                  src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`}
+                />
+              </div>
+            </Slider>
+          </SliderWrapper>
           <ContentsTags>
             <div>{props.data?.fetchUseditem.contents}</div>
             <div>태그 태그 태그</div>
@@ -64,8 +90,9 @@ export default function ProductDetailUI(props) {
         <Map></Map>
         <Line></Line>
         <Buttons>
-          <ToList>목록으로</ToList>
-          <ToBuy>구매하기</ToBuy>
+          <ToList onClick={props.onClickMoveToList}>목록으로</ToList>
+          <ToBuy onClick={props.onClickUpdate}>수정하기</ToBuy>
+          <ToBuy onClick={props.onClickDelete}>삭제하기</ToBuy>
         </Buttons>
       </MainWrapper>
     </Wrapper>

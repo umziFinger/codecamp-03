@@ -18,9 +18,10 @@ export const Row = styled.div`
   width: 100%;
   display: flex;
   margin-top: 20px;
+  cursor: pointer;
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 160px;
   height: 160px;
   background-color: grey;

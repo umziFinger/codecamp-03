@@ -49,9 +49,13 @@ export default function ListReadUI(props) {
               id={el._id}
               onClick={props.onClickBestBoard}
             >
-              <Img src="/images/풀때기.png" />
+              <Img src={`https://storage.googleapis.com/${el.images[0]}`} />
               <Info>
-                <InfoTitle>{el.title}</InfoTitle>
+                <InfoTitle>
+                  {el.title.length > 15
+                    ? el.title.slice(0, 16) + "..."
+                    : el.title}
+                </InfoTitle>
                 <InfoBottom>
                   <InfoBottomLeft>
                     <Profile>

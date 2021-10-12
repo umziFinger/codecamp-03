@@ -102,7 +102,13 @@ export const Price = styled.div`
   justify-content: flex-start;
 `;
 
-export const Carousel = styled.div`
+export const SliderWrapper = styled.div`
+  width: 504px;
+  height: 482px;
+  margin-bottom: 150px;
+`;
+
+export const SliderImage = styled.img`
   width: 504px;
   height: 482px;
   background-color: grey;

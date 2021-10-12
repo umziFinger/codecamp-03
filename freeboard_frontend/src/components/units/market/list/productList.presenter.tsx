@@ -17,8 +17,8 @@ export default function ProductListUI(props) {
       <MainWrapper>
         <div>상품 목록</div>
         {props.data?.fetchUseditems.map((el) => (
-          <Row key={el._id}>
-            <Image></Image>
+          <Row id={el._id} key={el._id} onClick={props.onClickMoveToDetail(el)}>
+            <Image src={`https://storage.googleapis.com/${el.images[0]}`} />
             <Contents>
               <ContentsLeft>
                 <Name>{el.name}</Name>
@@ -40,6 +40,9 @@ export default function ProductListUI(props) {
           </Row>
         ))}
       </MainWrapper>
+      {props.todayView?.map((el) => (
+        <img src={`https://storage.googleapis.com/${el.images[0]}`} />
+      ))}
     </Wrapper>
   );
 }

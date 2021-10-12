@@ -30,6 +30,8 @@ export const BestContents = styled.div`
 
 export const Img = styled.img`
   border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  height: 120px;
 `;
 
 export const Info = styled.div`

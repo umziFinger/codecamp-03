@@ -1,8 +1,10 @@
 import SubmitButton from "../../../commons/buttons/submitButton/submitButton";
 import ErrorMessage from "../../../commons/errors/errorMessage/errorMessage";
+import UpLoads02 from "../../../commons/uploads/02/uploads02.container";
 import {
   Address,
   AddressDetail,
+  Cancel,
   CreateButton,
   GpsButton,
   InputBox,
@@ -23,16 +25,25 @@ import {
 
 export default function CreateProductUI(props) {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(
+        props.isEdit ? props.onClickUpdate : props.onClickSubmit
+      )}
+    >
       <Wrapper1>
         <Wrapper>
-          <Title>상품 등록하기</Title>
+          {props.isEdit ? (
+            <Title>상품 수정하기</Title>
+          ) : (
+            <Title>상품 등록하기</Title>
+          )}
           <Row>
             <Label>상품명</Label>
             <InputBox
               type="text"
               placeholder="상품명을 작성해주세요"
               {...props.register("name")}
+              defaultValue={props.data?.fetchUseditem.name}
             />
             <ErrorMessage message={props.formState.errors.name?.message} />
           </Row>
@@ -42,6 +53,7 @@ export default function CreateProductUI(props) {
               type="text"
               placeholder="한줄요약을 작성해주세요"
               {...props.register("remarks")}
+              defaultValue={props.data?.fetchUseditem.remarks}
             />
             <ErrorMessage message={props.formState.errors.remarks?.message} />
           </Row>
@@ -51,6 +63,7 @@ export default function CreateProductUI(props) {
               type="text"
               placeholder="상품설명을 작성해주세요"
               {...props.register("contents")}
+              defaultValue={props.data?.fetchUseditem.contents}
             />
             <ErrorMessage message={props.formState.errors.contents?.message} />
           </Row>
@@ -60,6 +73,7 @@ export default function CreateProductUI(props) {
               type="text"
               placeholder="판매가격을 입력해주세요"
               {...props.register("price")}
+              defaultValue={props.data?.fetchUseditem.price}
             />
             <ErrorMessage message={props.formState.errors.price?.message} />
           </Row>
@@ -91,10 +105,19 @@ export default function CreateProductUI(props) {
           </Location>
           <Photo>
             <Label>사진첨부</Label>
-            <div>
-              <Upload src="/images/upload.png" />
-              <Upload src="/images/upload.png" />
-            </div>
+            <Upload>
+              {new Array(2).fill(1).map((el, index) => (
+                <UpLoads02
+                  key={el.index}
+                  onChangeFile={props.onChangeFile}
+                  index={index}
+                  register={props.register("images")}
+                />
+              ))}
+
+              {/* <Upload src="/images/upload.png" />
+              <Upload src="/images/upload.png" /> */}
+            </Upload>
           </Photo>
           <SelectPhoto>
             <Label>메인사진 설정</Label>
@@ -102,7 +125,17 @@ export default function CreateProductUI(props) {
             <Radio type="radio" name="aaa" /> 사진2
           </SelectPhoto>
           <div>
-            <SubmitButton name="등록하기" isValid={props.formState.isValid} />
+            {props.isEdit ? (
+              <>
+                <Cancel onClick={props.updateCancel}>취소하기</Cancel>
+                <SubmitButton
+                  name="수정하기"
+                  isValid={props.formState.isValid}
+                />
+              </>
+            ) : (
+              <SubmitButton name="등록하기" isValid={props.formState.isValid} />
+            )}
           </div>
         </Wrapper>
       </Wrapper1>

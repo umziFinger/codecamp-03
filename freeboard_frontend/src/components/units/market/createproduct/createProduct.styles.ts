@@ -81,8 +81,8 @@ export const Photo = styled.div`
   height: 220px;
 `;
 
-export const Upload = styled.img`
-  margin: 10px 10px 0px 0px;
+export const Upload = styled.div`
+  display: flex;
 `;
 
 export const SelectPhoto = styled.div`
@@ -98,4 +98,12 @@ export const CreateButton = styled.button`
   width: 180px;
   height: 52px;
   border: none;
+`;
+
+export const Cancel = styled.button`
+  margin-top: 80px;
+  width: 180px;
+  height: 52px;
+  border: none;
+  margin-right: 20px;
 `;

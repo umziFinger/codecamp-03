@@ -18,6 +18,7 @@ import {
   ProfileIcon,
   Remarks,
   Seller,
+  SliderEmptyImage,
   SliderImage,
   SliderWrapper,
   Title,
@@ -28,6 +29,7 @@ import {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Dompurify from "dompurify";
 
 const settings = {
   dots: true,
@@ -70,19 +72,31 @@ export default function ProductDetailUI(props) {
           <SliderWrapper>
             <Slider {...settings}>
               <div>
-                <SliderImage
-                  src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
-                />
+                {props.data?.fetchUseditem.images[0] ? (
+                  <SliderImage
+                    src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
+                  />
+                ) : (
+                  <SliderEmptyImage></SliderEmptyImage>
+                )}
               </div>
               <div>
-                <SliderImage
-                  src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`}
-                />
+                {props.data?.fetchUseditem.images[1] ? (
+                  <SliderImage
+                    src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`}
+                  />
+                ) : (
+                  <SliderEmptyImage></SliderEmptyImage>
+                )}
               </div>
             </Slider>
           </SliderWrapper>
           <ContentsTags>
-            <div>{props.data?.fetchUseditem.contents}</div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: props.data?.fetchUseditem.contents,
+              }}
+            />
             <div>태그 태그 태그</div>
           </ContentsTags>
         </Body>

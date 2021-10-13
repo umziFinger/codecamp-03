@@ -35,6 +35,7 @@ import {
   NextPrevPage,
   PageWrapper,
   Keyword,
+  EmptyImg,
 } from "./ListRead.styled";
 
 export default function ListReadUI(props) {
@@ -49,7 +50,11 @@ export default function ListReadUI(props) {
               id={el._id}
               onClick={props.onClickBestBoard}
             >
-              <Img src={`https://storage.googleapis.com/${el.images[0]}`} />
+              {el.images[0] ? (
+                <Img src={`https://storage.googleapis.com/${el.images[0]}`} />
+              ) : (
+                <EmptyImg></EmptyImg>
+              )}
               <Info>
                 <InfoTitle>
                   {el.title.length > 15

@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  padding-left: 100px;
 `;
 
 export const MainWrapper = styled.div`
@@ -24,7 +24,12 @@ export const Row = styled.div`
 export const Image = styled.img`
   width: 160px;
   height: 160px;
-  background-color: grey;
+`;
+
+export const NoneImage = styled.div`
+  width: 160px;
+  height: 160px;
+  background-color: #bdbdbd;
 `;
 
 export const Contents = styled.div`
@@ -33,6 +38,7 @@ export const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 20px;
 `;
 
 export const ContentsLeft = styled.div`
@@ -61,4 +67,42 @@ export const Heart = styled.img`
 export const ContentsLeftBottom = styled.div`
   display: flex;
   margin-top: 10px;
+`;
+
+export const Price = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+`;
+
+export const TodayView = styled.div`
+  position: sticky;
+  top: 500px;
+  margin-left: 100px;
+  width: 196px;
+  border: 1px solid #bdbdbd;
+  padding: 15px;
+`;
+
+export const TodayViewProduct = styled.div`
+  width: 156px;
+  height: 200px;
+  border: 1px solid #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0px;
+  justify-content: space-around;
+  padding: 20px;
+`;
+
+export const TodayViewImage = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+
+export const EmptyImage = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: #bdbdbd;
 `;

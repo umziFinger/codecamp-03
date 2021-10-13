@@ -111,8 +111,14 @@ export const SliderWrapper = styled.div`
 export const SliderImage = styled.img`
   width: 504px;
   height: 482px;
-  background-color: grey;
   margin-top: 80px;
+`;
+
+export const SliderEmptyImage = styled.div`
+  width: 504px;
+  height: 482px;
+  margin-top: 80px;
+  background-color: #bdbdbd;
 `;
 
 export const ContentsTags = styled.div`

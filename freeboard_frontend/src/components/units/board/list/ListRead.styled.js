@@ -34,6 +34,13 @@ export const Img = styled.img`
   height: 120px;
 `;
 
+export const EmptyImg = styled.div`
+  border-radius: 20px 20px 0px 0px;
+  width: 100%;
+  height: 120px;
+  background-color: #bdbdbd;
+`;
+
 export const Info = styled.div`
   padding-top: 20px;
   padding-left: 20px;

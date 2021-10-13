@@ -25,7 +25,7 @@ export default function CreateProduct(props) {
 
   const [files, setFiles] = useState([null, null, null]);
 
-  const { handleSubmit, register, formState } = useForm({
+  const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
@@ -73,6 +73,12 @@ export default function CreateProduct(props) {
     router.push(`/market/detail/${router.query.useditemId}`);
   }
 
+  function onChangeContents(value) {
+    setValue("contents", value === "<p><br></p>" ? "" : value);
+    console.log(value);
+    trigger("contents");
+  }
+
   return (
     <CreateProductUI
       handleSubmit={handleSubmit}
@@ -84,6 +90,7 @@ export default function CreateProduct(props) {
       updateCancel={updateCancel}
       data={data}
       onClickUpdate={onClickUpdate}
+      onChangeContents={onChangeContents}
     />
   );
 }

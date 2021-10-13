@@ -15,6 +15,7 @@ import {
   Photo,
   ProductDetail,
   Radio,
+  ReactQuillBox,
   Row,
   SelectPhoto,
   Title,
@@ -22,6 +23,8 @@ import {
   Wrapper,
   Wrapper1,
 } from "./createProduct.styles";
+
+import "react-quill/dist/quill.snow.css";
 
 export default function CreateProductUI(props) {
   return (
@@ -59,12 +62,18 @@ export default function CreateProductUI(props) {
           </Row>
           <Row>
             <Label>상품설명</Label>
-            <ProductDetail
+            <ReactQuillBox
+              onChange={props.onChangeContents}
+              placeholder="상품설명을 작성해주세요"
+              // {...props.register("contents")}
+              defaultValue={props.data?.fetchUseditem.contents}
+            />
+            {/* <ProductDetail
               type="text"
               placeholder="상품설명을 작성해주세요"
               {...props.register("contents")}
               defaultValue={props.data?.fetchUseditem.contents}
-            />
+            /> */}
             <ErrorMessage message={props.formState.errors.contents?.message} />
           </Row>
           <Row>

@@ -10,9 +10,10 @@ export const CommentMap = styled.div`
   display: flex;
   flex-direction: column;
   height: 100px;
-  width: 1200px;
+  width: 1100px;
   /* border-bottom: 1px solid #bdbdbd; */
   margin-top: 40px;
+  margin-left: 100px;
 `;
 export const CommentProfileImageBox = styled.div`
   display: flex;
@@ -26,7 +27,7 @@ export const CommentProfileImage = styled.img`
 `;
 
 export const Row = styled.div`
-  width: 1200px;
+  width: 1100px;
 
   display: flex;
 `;

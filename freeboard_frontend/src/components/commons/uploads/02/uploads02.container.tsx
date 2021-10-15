@@ -30,6 +30,7 @@ export default function UpLoads02(props) {
       onChangeFile={onChangeFile}
       imageUrl={imageUrl}
       register={props.register}
+      defaultFile={props.defaultFile}
     />
   );
 }

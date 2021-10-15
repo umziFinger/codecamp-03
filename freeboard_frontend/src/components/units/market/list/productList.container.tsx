@@ -42,6 +42,10 @@ export default function ProductList() {
     });
   }
 
+  function onClickMoveToTodayView(event) {
+    router.push(`/market/detail/${event.currentTarget.id}`);
+  }
+
   console.log(todayView);
   return (
     <ProductListUI
@@ -49,6 +53,7 @@ export default function ProductList() {
       onClickMoveToDetail={onClickMoveToDetail}
       todayView={todayView}
       onLoadMore={onLoadMore}
+      onClickMoveToTodayView={onClickMoveToTodayView}
     />
   );
 }

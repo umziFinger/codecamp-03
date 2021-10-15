@@ -117,6 +117,7 @@ export default function CreateProductUI(props) {
             <Upload>
               {new Array(2).fill(1).map((el, index) => (
                 <UpLoads02
+                  defaultFile={props.data?.fetchUseditem.images?.[index]}
                   key={el.index}
                   onChangeFile={props.onChangeFile}
                   index={index}

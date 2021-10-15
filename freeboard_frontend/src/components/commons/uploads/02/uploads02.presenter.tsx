@@ -4,8 +4,14 @@ export default function UpLoads02UI(props) {
   return (
     <>
       <div>
-        {props.imageUrl ? (
-          <Upload src={props.imageUrl} onClick={props.onClickFile} />
+        {props.defaultFile || props.imageUrl ? (
+          <Upload
+            src={
+              props.imageUrl ||
+              `https://storage.googleapis.com/${props.defaultFile}`
+            }
+            onClick={props.onClickFile}
+          />
         ) : (
           <Upload
             src="/images/upload.png"

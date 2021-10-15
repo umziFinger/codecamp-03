@@ -97,7 +97,7 @@ export default function CreateProductUI(props) {
           <Location>
             <div>
               <Label>거래위치</Label>
-              <Map></Map>
+              <Map id="map"></Map>
             </div>
             <div>
               <div>

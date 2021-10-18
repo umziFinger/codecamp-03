@@ -129,9 +129,10 @@ export const ContentsTags = styled.div`
 export const Map = styled.div`
   width: 792px;
   height: 360px;
-  background-color: grey;
   margin-top: 80px;
   margin-bottom: 50px;
+  background-color: #bdbdbd;
+  z-index: 0;
 `;
 
 export const Buttons = styled.div`

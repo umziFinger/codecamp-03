@@ -14,6 +14,43 @@ export const MainWrapper = styled.div`
   align-items: center;
 `;
 
+export const BestWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  margin-bottom: 200px;
+  justify-content: center;
+`;
+
+export const BestRow = styled.div`
+  width: 282px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+`;
+
+export const BestImage = styled.img`
+  width: 242px;
+  height: 242px;
+  margin-bottom: 20px;
+`;
+
+export const BestImageNone = styled.div`
+  width: 242px;
+  height: 242px;
+  background-color: #bdbdbd;
+  margin-bottom: 20px;
+`;
+
+export const BestName = styled.div`
+  font-size: 25px;
+  font-weight: bold;
+`;
+
+export const BestRemarks = styled.div`
+  font-size: 17px;
+  font-weight: bold;
+`;
+
 export const Row = styled.div`
   width: 100%;
   display: flex;

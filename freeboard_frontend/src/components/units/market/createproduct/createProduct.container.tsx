@@ -30,7 +30,6 @@ export default function CreateProduct(props) {
   const [files, setFiles] = useState([null, null, null]);
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
-  // 주소 스테이트 만들었고 스테이트 백엔드에 저장하는거 할 차례
 
   const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
@@ -42,17 +41,20 @@ export default function CreateProduct(props) {
 
     const uploadFiles = files
       .filter((el) => el)
-      .map((el) =>
-        uploadFile({
-          variables: { file: el },
-        })
-      );
+      .map((el) => uploadFile({ variables: { file: el } }));
     const results = await Promise.all(uploadFiles);
     const imageUrl = results.map((el) => el?.data.uploadFile.url || "");
 
     const result = await createUseditem({
       variables: {
-        createUseditemInput: { ...data, images: imageUrl },
+        createUseditemInput: {
+          ...data,
+          images: imageUrl,
+          useditemAddress: {
+            lat,
+            lng,
+          },
+        },
       },
     });
     console.log(result);
@@ -60,10 +62,32 @@ export default function CreateProduct(props) {
     // setInputs(data);
   }
 
-  function onClickUpdate(data) {
+  async function onClickUpdate(data1) {
+    const myUpdateUseditemInput: any = {};
+    if (data1.name) myUpdateUseditemInput.name = data1.name;
+    if (data1.remarks) myUpdateUseditemInput.remarks = data1.remarks;
+    if (data1.contents) myUpdateUseditemInput.contents = data1.contents;
+    if (data1.price) myUpdateUseditemInput.price = data1.price;
+
+    const uploadFiles = files
+      .filter((el) => el)
+      .map((el) => uploadFile({ variables: { file: el } }));
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    myUpdateUseditemInput.images = nextImages;
+
+    if (data?.fetchUseditem.images.length) {
+      const prevImages = [...data?.fetchUseditem.images];
+      myUpdateUseditemInput.images = prevImages.map(
+        (el, index) => nextImages[index] || el
+      );
+    } else {
+      myUpdateUseditemInput.images = nextImages;
+    }
+
     updateUseditem({
       variables: {
-        updateUseditemInput: { ...data },
+        updateUseditemInput: myUpdateUseditemInput,
         useditemId: router.query.useditemId,
       },
     });
@@ -118,6 +142,8 @@ export default function CreateProduct(props) {
             // 클릭한 위도, 경도 정보를 가져옵니다
             const latlng = mouseEvent.latLng;
             console.log(latlng);
+            setLat(latlng.La);
+            setLng(latlng.Ma);
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
           }

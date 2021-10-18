@@ -4,6 +4,7 @@ import LayoutSidebarUI from "./LayoutSidebar.presenter";
 
 export default function LayoutSidebar() {
   const [isMarket, setIsMarket] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const router = useRouter();
 
@@ -29,6 +30,10 @@ export default function LayoutSidebar() {
     setIsMarket((prev) => !prev);
   }
 
+  function onClickCharge() {
+    setModalVisible((prev) => !prev);
+  }
+
   return (
     <LayoutSidebarUI
       onClickList={onClickList}
@@ -37,6 +42,9 @@ export default function LayoutSidebar() {
       onClickCreateProduct={onClickCreateProduct}
       isMarket={isMarket}
       onClickProductList={onClickProductList}
+      onClickCharge={onClickCharge}
+      modalVisible={modalVisible}
+      setModalVisible={setModalVisible}
     />
   );
 }

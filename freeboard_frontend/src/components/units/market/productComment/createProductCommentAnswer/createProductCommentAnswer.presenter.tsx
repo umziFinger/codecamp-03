@@ -23,9 +23,18 @@ export default function ProductCommentAnswerUI(props) {
           />
           <CommentLengthCheckBox>
             <div>100</div>
-            <CommentButton onClick={props.onClickAnswer}>
-              답글등록
-            </CommentButton>
+            {!props.isEdit ? (
+              <CommentButton onClick={props.onClickAnswer}>
+                답글등록
+              </CommentButton>
+            ) : (
+              <CommentButton
+                id={props.el2._id}
+                onClick={props.onClickAnswerEdit}
+              >
+                답글수정
+              </CommentButton>
+            )}
           </CommentLengthCheckBox>
         </ContentsInputBox>
       </CommentWrapper>

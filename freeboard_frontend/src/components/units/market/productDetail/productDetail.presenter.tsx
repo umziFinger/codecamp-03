@@ -64,7 +64,7 @@ export default function ProductDetailUI(props) {
               <Name>{props.data?.fetchUseditem.name}</Name>
             </div>
             <Like>
-              <Heart src="/images/heart.png" />
+              <Heart src="/images/heart.png" onClick={props.onClickPick} />
               <div>{props.data?.fetchUseditem.pickedCount}</div>
             </Like>
           </Title>
@@ -101,12 +101,26 @@ export default function ProductDetailUI(props) {
           </ContentsTags>
         </Body>
         <Line></Line>
-        <Map></Map>
+        {props.data?.fetchUseditem.useditemAddress?.lat ? (
+          <Map id="map"></Map>
+        ) : (
+          <Map></Map>
+        )}
         <Line></Line>
         <Buttons>
-          <ToList onClick={props.onClickMoveToList}>목록으로</ToList>
-          <ToBuy onClick={props.onClickUpdate}>수정하기</ToBuy>
-          <ToBuy onClick={props.onClickDelete}>삭제하기</ToBuy>
+          {props.data?.fetchUseditem.seller.email ===
+          props.userdata?.fetchUserLoggedIn.email ? (
+            <>
+              <ToList onClick={props.onClickMoveToList}>목록으로</ToList>
+              <ToBuy onClick={props.onClickUpdate}>수정하기</ToBuy>
+              <ToBuy onClick={props.onClickDelete}>삭제하기</ToBuy>
+            </>
+          ) : (
+            <>
+              <ToList onClick={props.onClickMoveToList}>목록으로</ToList>
+              <ToBuy onClick={props.onClickBuy}>구매하기</ToBuy>
+            </>
+          )}
         </Buttons>
       </MainWrapper>
     </Wrapper>

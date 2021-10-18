@@ -21,6 +21,7 @@ export default function LayoutHeaderUI(props) {
             <>
               <ProfileImg src="/images/profile.png" />
               <ProfileName>{props.data?.fetchUserLoggedIn.name}님</ProfileName>
+              <div>{props.data?.fetchUserLoggedIn.userPoint.amount}포인트</div>
               <Logout
                 src="https://png.pngtree.com/png-vector/20190417/ourmid/pngtree-vector-logout-icon-png-image_947079.jpg"
                 onClick={props.onClickLogout}

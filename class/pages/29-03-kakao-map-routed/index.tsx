@@ -36,7 +36,7 @@ export default function KaKaoMapPage() {
           function (mouseEvent: { latLng: any }) {
             // 클릭한 위도, 경도 정보를 가져옵니다
             const latlng = mouseEvent.latLng;
-
+            console.log(latlng);
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
           }

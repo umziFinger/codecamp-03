@@ -34,12 +34,12 @@ export const InputBox = styled.input`
   padding: 10px;
 `;
 
-// export const ProductDetail = styled.input`
-//   width: 996px;
-//   height: 320px;
-//   border: 1px solid #bdbdbd;
-//   margin-top: 10px;
-// `;
+export const ProductDetail = styled.input`
+  width: 996px;
+  height: 320px;
+  border: 1px solid #bdbdbd;
+  margin-top: 10px;
+`;
 
 export const ReactQuillBox = styled(ReactQuill)`
   width: 996px;

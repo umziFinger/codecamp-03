@@ -62,7 +62,7 @@ export default function ProductCommentListUI(props) {
       )}
 
       {props.answersData?.fetchUseditemQuestionAnswers.map((el) => (
-        <ProductCommentAnswerList el={el} />
+        <ProductCommentAnswerList el={el} el2={props.el} />
       ))}
 
       {props.isAnswer && (

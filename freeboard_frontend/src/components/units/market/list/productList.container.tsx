@@ -3,13 +3,18 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import ProductListUI from "./productList.presenter";
-import { FETCH_USED_ITEMS } from "./productList.queries";
+import {
+  FETCH_USED_ITEMS,
+  FETCH_USED_ITEMS_OF_THE_BEST,
+} from "./productList.queries";
 
 export default function ProductList() {
   const { data, fetchMore } = useQuery(FETCH_USED_ITEMS);
   const router = useRouter();
   const [todayView, setTodayView] = useState([]);
   const clickDate = new Date().toISOString().slice(0, 10);
+
+  const { data: bestdata } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
 
   useEffect(() => {
     setTodayView(JSON.parse(localStorage.getItem(clickDate)));
@@ -46,7 +51,10 @@ export default function ProductList() {
     router.push(`/market/detail/${event.currentTarget.id}`);
   }
 
-  console.log(todayView);
+  function onClickBestUseditem(event) {
+    router.push(`/market/detail/${event.currentTarget.id}`);
+  }
+
   return (
     <ProductListUI
       data={data}
@@ -54,6 +62,8 @@ export default function ProductList() {
       todayView={todayView}
       onLoadMore={onLoadMore}
       onClickMoveToTodayView={onClickMoveToTodayView}
+      bestdata={bestdata}
+      onClickBestUseditem={onClickBestUseditem}
     />
   );
 }

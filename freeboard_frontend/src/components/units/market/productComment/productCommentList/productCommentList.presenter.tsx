@@ -46,7 +46,7 @@ export default function ProductCommentListUI(props) {
                   onClick={props.onClickDelete}
                 />
                 <div id={props.el._id} onClick={props.onClickAnswer}>
-                  answer
+                  <img src="/images/answer.png" />
                 </div>
               </EditBox>
             </Row>

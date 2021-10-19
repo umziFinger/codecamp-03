@@ -42,7 +42,9 @@ export default function ProductCommentAnswerListUI(props) {
                   src="/images/delete.png"
                   onClick={props.onClickDelete}
                 />
-                <div>answer</div>
+                <div>
+                  <img src="/images/answer.png" />
+                </div>
               </EditBox>
             </Row>
           </CommentMap>

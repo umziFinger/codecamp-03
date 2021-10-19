@@ -81,5 +81,5 @@ export const EditBox = styled.div`
   display: flex;
   justify-content: center;
   justify-content: space-around;
-  width: 5%;
+  width: 8%;
 `;

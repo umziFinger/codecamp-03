@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { FETCH_USER_LOGGED_IN } from "../../../commons/layout/header/LayoutHeader.queries";
 import ProductDetailUI from "./productDetail.presenter";
+import { Modal } from "antd";
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   DELETE_USED_ITEM,
@@ -65,6 +66,7 @@ export default function ProductDetail() {
       },
     });
     console.log(result);
+    <Modal>완료</Modal>;
   }
 
   const lat = data?.fetchUseditem.useditemAddress?.lat;

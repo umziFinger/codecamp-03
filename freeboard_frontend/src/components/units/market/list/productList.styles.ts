@@ -14,6 +14,12 @@ export const MainWrapper = styled.div`
   align-items: center;
 `;
 
+export const Title = styled.div`
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 50px;
+`;
+
 export const BestWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -109,6 +115,10 @@ export const ContentsLeftBottom = styled.div`
 export const Price = styled.div`
   font-size: 24px;
   font-weight: bold;
+`;
+
+export const PriceIcon = styled.img`
+  margin-right: 10px;
 `;
 
 export const TodayView = styled.div`

@@ -15,8 +15,10 @@ import {
   Name,
   NoneImage,
   Price,
+  PriceIcon,
   ProfileIcon,
   Row,
+  Title,
   TodayView,
   TodayViewImage,
   TodayViewProduct,
@@ -29,6 +31,7 @@ export default function ProductListUI(props) {
   return (
     <Wrapper>
       <MainWrapper>
+        <Title>베스트 상품</Title>
         <BestWrapper>
           {props.bestdata?.fetchUseditemsOfTheBest.map((el) => (
             <BestRow id={el._id} onClick={props.onClickBestUseditem}>
@@ -88,7 +91,7 @@ export default function ProductListUI(props) {
                     <>SOLD OUT</>
                   ) : (
                     <>
-                      <img src="/images/priceIcon.png" />
+                      <PriceIcon src="/images/priceIcon.png" />
                       {el.price?.toLocaleString()}원
                     </>
                   )}

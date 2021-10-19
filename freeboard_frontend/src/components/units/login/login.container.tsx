@@ -31,8 +31,9 @@ export default function Login() {
     });
     // console.log(result.data?.loginUser.accessToken);
     // localStorage.removeItem("")
-    localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
-    setAccessToken(result.data?.loginUser.accessToken);
+    // localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
+    // setAccessToken(result.data?.loginUser.accessToken);
+    localStorage.setItem("isLogedIn", "true");
     console.log(accessToken);
     router.push(`/login/success`);
   }

@@ -17,7 +17,7 @@ export default function LayoutHeaderUI(props) {
       <Wrapper>
         <Logo onClick={props.onClickLogo}>LOGO</Logo>
         <RightTop>
-          {props.data ? (
+          {process.browser && localStorage.getItem("isLogedIn") ? (
             <>
               <ProfileImg src="/images/profile.png" />
               <ProfileName>{props.data?.fetchUserLoggedIn.name}님</ProfileName>

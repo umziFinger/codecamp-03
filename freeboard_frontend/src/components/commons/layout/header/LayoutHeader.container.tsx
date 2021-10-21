@@ -12,6 +12,8 @@ export default function LayoutHeader() {
   const { accessToken, setAccessToken } = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
+  console.log(data);
+
   function onClickLogin() {
     router.push(`/login`);
   }
@@ -21,7 +23,7 @@ export default function LayoutHeader() {
   }
 
   function onClickLogo() {
-    router.push(`/boards/main`);
+    router.push(`/main`);
   }
 
   function onClickLogout() {

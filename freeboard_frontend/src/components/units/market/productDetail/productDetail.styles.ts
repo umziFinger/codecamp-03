@@ -131,8 +131,7 @@ export const Map = styled.div`
   height: 360px;
   margin-top: 80px;
   margin-bottom: 50px;
-  background-color: #bdbdbd;
-  z-index: 0;
+  /* z-index: 0; */
 `;
 
 export const Buttons = styled.div`

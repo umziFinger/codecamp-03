@@ -72,36 +72,91 @@ export default function ProductDetail() {
   const lat = data?.fetchUseditem.useditemAddress?.lat;
   const lng = data?.fetchUseditem.useditemAddress?.lng;
 
+  console.log(lat, lng);
+
+  // useEffect(() => {
+  //   const script = document.createElement("script");
+  //   script.src =
+  //     "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=3b50eb6bcb79315da55039f6461203ef";
+  //   document.head.appendChild(script);
+  //   script.onload = () => {
+  //     window.kakao.maps.load(function () {
+  //       const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
+  //       const options = {
+  //         // 지도를 생성할 때 필요한 기본 옵션
+  //         center: new window.kakao.maps.LatLng(Number(lng), Number(lat)), // 지도의 중심좌표.
+  //         draggable: false,
+  //         level: 3, // 지도의 레벨(확대, 축소 정도)
+  //       };
+  //       const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+  //       console.log(map);
+
+  //       const marker = new window.kakao.maps.Marker({
+  //         // 지도 중심좌표에 마커를 생성합니다
+  //         position: map.getCenter(),
+  //       });
+  //       // 지도에 마커를 표시합니다
+  //       marker.setMap(map);
+
+  //       // 지도에 클릭 이벤트를 등록합니다
+  //       // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
+  //       window.kakao.maps.event.addListener(
+  //         map,
+  //         "click",
+  //         function (mouseEvent: { latLng: any }) {}
+  //       );
+  //     });
+  //   };
+  // });
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=3b50eb6bcb79315da55039f6461203ef";
+      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=f2400c45d63389ba72ae0f127645b6ec&libraries=services";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(function () {
         const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
         const options = {
           // 지도를 생성할 때 필요한 기본 옵션
-          center: new window.kakao.maps.LatLng(lng, lat), // 지도의 중심좌표.
-          draggable: false,
+          center: new window.kakao.maps.LatLng(
+            Number(data?.fetchUseditem.useditemAddress?.lat) || 37.485148,
+            Number(data?.fetchUseditem.useditemAddress?.lng) || 126.895113
+          ), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
+          // draggable: false,
         };
-        const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+
+        const map = new window.kakao.maps.Map(container, options);
+
         console.log(map);
 
         const marker = new window.kakao.maps.Marker({
           // 지도 중심좌표에 마커를 생성합니다
           position: map.getCenter(),
         });
-        // 지도에 마커를 표시합니다
         marker.setMap(map);
 
-        // 지도에 클릭 이벤트를 등록합니다
-        // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
         window.kakao.maps.event.addListener(
           map,
-          "click",
-          function (mouseEvent: { latLng: any }) {}
+          "click"
+          // function (mouseEvent: { latLng: any }) {
+          //   // 클릭한 위도, 경도 정보를 가져옵니다
+
+          //   const latlng = mouseEvent.latLng;
+
+          //   // 마커 위치를 클릭한 위치로 옮깁니다
+          //   marker.setPosition(latlng);
+
+          //   // const message =
+          //   //   "클릭한 위치의 위도는 " +
+          //   //   latlng.getLat() +
+          //   //   " 이고, " +
+          //   //   "경도는 " +
+          //   //   latlng.getLng() +
+          //   //   " 입니다";
+          //   // alert(message);
+          // }
         );
       });
     };

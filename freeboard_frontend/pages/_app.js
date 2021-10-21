@@ -12,6 +12,7 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { initializeApp } from "firebase/app";
 import { createUploadLink } from "apollo-upload-client";
 import { createContext, useEffect, useState } from "react";
+import { getAccessToken } from "../src/commons/libraries/getAccessToken";
 
 export const firebaseApp = initializeApp({
   apiKey: "AIzaSyC5uPKSGi71y_08KWcofZ-DsXo4DdojtZ8",
@@ -37,9 +38,10 @@ function MyApp({ Component, pageProps }) {
   };
 
   useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken") || "";
-    setAccessToken(accessToken);
-  }, [accessToken]);
+    // const accessToken = localStorage.getItem("accessToken") || "";
+    // setAccessToken(accessToken);
+    if (localStorage.getItem("isLogedIn")) getAccessToken(setAccessToken);
+  }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {

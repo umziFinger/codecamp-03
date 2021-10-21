@@ -34,6 +34,10 @@ export default function LayoutSidebar() {
     setModalVisible((prev) => !prev);
   }
 
+  function onClickMyPage() {
+    router.push(`/mypage/myuseditem`);
+  }
+
   return (
     <LayoutSidebarUI
       onClickList={onClickList}
@@ -45,6 +49,7 @@ export default function LayoutSidebar() {
       onClickCharge={onClickCharge}
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
+      onClickMyPage={onClickMyPage}
     />
   );
 }

@@ -101,11 +101,7 @@ export default function ProductDetailUI(props) {
           </ContentsTags>
         </Body>
         <Line></Line>
-        {props.data?.fetchUseditem.useditemAddress?.lat ? (
-          <Map id="map"></Map>
-        ) : (
-          <Map></Map>
-        )}
+        <Map id="map"></Map>
         <Line></Line>
         <Buttons>
           {props.data?.fetchUseditem.seller.email ===

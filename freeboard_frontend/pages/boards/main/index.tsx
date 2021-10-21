@@ -1,5 +1,0 @@
-import MainPage from "../../../src/components/units/board/main/main.container";
-
-export default function Main() {
-  return <MainPage />;
-}

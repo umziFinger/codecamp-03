@@ -16,6 +16,7 @@ export default function LayoutSidebarUI(props) {
               <SubMenu onClick={props.onClickCharge}>충전하기</SubMenu>
             </>
           )}
+          <Menu onClick={props.onClickMyPage}>마이페이지</Menu>
         </MenuWrapper>
       </Wrapper>
       <PointCharge

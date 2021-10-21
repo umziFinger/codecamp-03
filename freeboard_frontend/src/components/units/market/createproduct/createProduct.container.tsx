@@ -28,8 +28,8 @@ export default function CreateProduct(props) {
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [files, setFiles] = useState([null, null, null]);
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
 
   const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
@@ -142,8 +142,8 @@ export default function CreateProduct(props) {
             // 클릭한 위도, 경도 정보를 가져옵니다
             const latlng = mouseEvent.latLng;
             console.log(latlng);
-            setLat(latlng.La);
-            setLng(latlng.Ma);
+            setLat(latlng.getLat());
+            setLng(latlng.getLng());
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
           }

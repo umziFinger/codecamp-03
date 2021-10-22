@@ -14,4 +14,5 @@ export const schema = yup.object().shape({
     .max(500, "상품설명은 500자 이내여야합니다.")
     .required("필수입력 사항입니다."),
   price: yup.number().required("필수입력 사항입니다"),
+  tags: yup.string().matches(/^#/, "태그의 형식은 '#태그' 입니다."),
 });

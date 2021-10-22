@@ -154,3 +154,10 @@ export const ToBuy = styled.button`
   margin: 10px;
   background-color: #ffd600;
 `;
+
+export const Tags = styled.div`
+  margin-top: 50px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+`;

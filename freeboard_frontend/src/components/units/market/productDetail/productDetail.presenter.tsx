@@ -21,6 +21,7 @@ import {
   SliderEmptyImage,
   SliderImage,
   SliderWrapper,
+  Tags,
   Title,
   ToBuy,
   ToList,
@@ -97,7 +98,11 @@ export default function ProductDetailUI(props) {
                 __html: props.data?.fetchUseditem.contents,
               }}
             />
-            <div>태그 태그 태그</div>
+            <Tags>
+              <div>{props.data?.fetchUseditem.tags[0]}</div>
+              <div>{props.data?.fetchUseditem.tags[1]}</div>
+              <div>{props.data?.fetchUseditem.tags[2]}</div>
+            </Tags>
           </ContentsTags>
         </Body>
         <Line></Line>

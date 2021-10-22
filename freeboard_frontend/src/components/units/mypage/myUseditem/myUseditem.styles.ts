@@ -176,6 +176,7 @@ export const ProfileWrapper = styled.div`
 
 export const ProfileName = styled.div`
   font-size: 20px;
+  font-weight: bold;
 `;
 
 export const ProfileImage = styled.img`
@@ -187,9 +188,11 @@ export const ProfileImage = styled.img`
 export const ProfilePoint = styled.div`
   margin-top: 30px;
   font-size: 18px;
+  font-weight: bold;
 `;
 
 export const MyProfile = styled.div`
   margin-top: 30px;
   font-size: 18px;
+  font-weight: bold;
 `;

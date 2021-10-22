@@ -101,6 +101,7 @@ export default function MyUseditemUI(props) {
           보유 포인트 : {props.userdata?.fetchUserLoggedIn.userPoint.amount}
           포인트
         </ProfilePoint>
+        <div onClick={props.onClickMoveToPointDetail}>포인트 사용내역</div>
         <MyProfile>내 프로필</MyProfile>
         <div>비밀번호 변경</div>
       </ProfileWrapper>

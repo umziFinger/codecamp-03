@@ -30,11 +30,16 @@ export default function CreateProduct(props) {
   const [files, setFiles] = useState([null, null, null]);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
+  const [tags, setTags] = useState([]);
 
   const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+
+  const onChangeTags = (event) => {
+    setTags(event.target.value.split(" "));
+  };
 
   async function onClickSubmit(data) {
     console.log({ ...data });
@@ -49,6 +54,7 @@ export default function CreateProduct(props) {
       variables: {
         createUseditemInput: {
           ...data,
+          tags,
           images: imageUrl,
           useditemAddress: {
             lat,
@@ -164,6 +170,7 @@ export default function CreateProduct(props) {
       data={data}
       onClickUpdate={onClickUpdate}
       onChangeContents={onChangeContents}
+      onChangeTags={onChangeTags}
     />
   );
 }

@@ -31,7 +31,9 @@ export default function MyUseditem() {
     setIsMyUseditem(false);
   }
 
-  function onClickMoveToChangePassword() {}
+  function onClickMoveToPointDetail() {
+    router.push(`/mypage/mypoint`);
+  }
 
   return (
     <MyUseditemUI
@@ -42,6 +44,7 @@ export default function MyUseditem() {
       onClickMyPick={onClickMyPick}
       pickeddata={pickeddata}
       userdata={userdata}
+      onClickMoveToPointDetail={onClickMoveToPointDetail}
     />
   );
 }

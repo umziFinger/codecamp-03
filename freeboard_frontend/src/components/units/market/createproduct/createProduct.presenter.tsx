@@ -92,7 +92,7 @@ export default function CreateProductUI(props) {
             <InputBox
               type="text"
               placeholder="#태그 #태그 #태그"
-              {...props.register("tags")}
+              onChange={props.onChangeTags}
             />
           </Row>
           <Location>

@@ -45,6 +45,7 @@ export default function ProductCommentWrite(props) {
         },
       ],
     });
+    setContents("");
   }
 
   function onClickQuestionEdit(event) {
@@ -77,6 +78,7 @@ export default function ProductCommentWrite(props) {
       isEdit={props.isEdit}
       el={props.el}
       onClickQuestionEdit={onClickQuestionEdit}
+      contents={contents}
     />
   );
 }

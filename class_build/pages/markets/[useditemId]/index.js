@@ -1,15 +1,18 @@
 import Head from "next/head";
 import { gql, request } from "graphql-request";
 
-export default function MarketsPage(props) {
+export default function MarketsPage() {
   return (
     <>
       <Head>
-        <meta property="og:title" content={props.fetchUseditem.name} />
-        <meta property="og:description" content={props.fetchUseditem.remarks} />
-        <meta property="og:image" content={props.fetchUseditem.images[0]} />
+        <meta property="og:title" content="나의 사이트 게시판 페이지" />
+        <meta property="og:description" content="환영합니다" />
+        <meta
+          property="og:image"
+          content="https://cdnweb01.wikitree.co.kr/webdata/editor/202004/07/img_20200407162305_1f42c686.webp"
+        />
       </Head>
-      <div>마켓페이지 입니다.</div>
+      <div>마켓페이지 입니다</div>
     </>
   );
 }

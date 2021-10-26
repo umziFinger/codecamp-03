@@ -7,7 +7,7 @@ import {
   UPDATE_USED_ITEM_QUESTION_ANSWER,
 } from "./ProductCommentAnswerList.queries";
 
-export default function ProductCommentAnswerList(props) {
+export default function ProductCommentAnswerList(props: any) {
   const [isEdit, setIsEdit] = useState(false);
 
   const [deleteUseditemQuestionAnswer] = useMutation(
@@ -18,7 +18,7 @@ export default function ProductCommentAnswerList(props) {
     setIsEdit((prev) => !prev);
   }
 
-  async function onClickDelete(event) {
+  async function onClickDelete(event: any) {
     await deleteUseditemQuestionAnswer({
       variables: {
         useditemQuestionAnswerId: event.target.id,

@@ -28,7 +28,7 @@ export default function UsedItemDetail() {
     <>
       <ProductDetail />
       <ProductCommentWrite />
-      {data?.fetchUseditemQuestions.map((el) => (
+      {data?.fetchUseditemQuestions.map((el: any) => (
         <ProductCommentList key={el._id} el={el} />
       ))}
     </>

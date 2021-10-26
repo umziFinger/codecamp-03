@@ -17,13 +17,13 @@ export default function ProductList() {
   const { data: bestdata } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
 
   useEffect(() => {
-    setTodayView(JSON.parse(localStorage.getItem(clickDate)));
+    setTodayView(JSON.parse(localStorage.getItem(clickDate) || "{}"));
   }, []);
 
-  const onClickMoveToDetail = (el) => () => {
+  const onClickMoveToDetail = (el: any) => () => {
     router.push(`/market/detail/${el._id}`);
 
-    const todayView = JSON.parse(localStorage.getItem(clickDate)) || [];
+    const todayView = JSON.parse(localStorage.getItem(clickDate) || "{}") || [];
 
     todayView.push(el);
     console.log(el);
@@ -47,11 +47,11 @@ export default function ProductList() {
     });
   }
 
-  function onClickMoveToTodayView(event) {
+  function onClickMoveToTodayView(event: any) {
     router.push(`/market/detail/${event.currentTarget.id}`);
   }
 
-  function onClickBestUseditem(event) {
+  function onClickBestUseditem(event: any) {
     router.push(`/market/detail/${event.currentTarget.id}`);
   }
 

@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
 
+interface IStatus {
+  status: String;
+}
+
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 `;
 
 export const Title = styled.div`
@@ -39,11 +42,11 @@ export const Date = styled.div`
   font-weight: bold;
 `;
 
-export const Contents = styled.div`
+export const Contents = styled.div<IStatus>`
   width: 25%;
   border-bottom: 1px solid #bdbdbd;
   font-size: 16px;
-  color: ${(props) =>
+  color: ${(props: any) =>
     props.status === "구매"
       ? "red"
       : props.status === "판매"
@@ -116,4 +119,39 @@ export const BalanceTitle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ProfileWrapper = styled.div`
+  width: 300px;
+  height: 500px;
+  margin-left: 100px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  background-color: #ffd600;
+`;
+
+export const ProfileName = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+export const ProfileImage = styled.img`
+  width: 180px;
+  height: 180px;
+  margin-top: 50px;
+  margin-left: 20px;
+`;
+
+export const ProfilePoint = styled.div`
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const MyProfile = styled.div`
+  margin-top: 30px;
+  font-size: 18px;
+  font-weight: bold;
 `;

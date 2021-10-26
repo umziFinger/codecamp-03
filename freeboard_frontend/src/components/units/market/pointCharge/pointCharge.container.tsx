@@ -8,7 +8,7 @@ declare const window: typeof globalThis & {
   IMP: any;
 };
 
-export default function PointCharge(props) {
+export default function PointCharge(props: any) {
   const [amount, setAmount] = useState(0);
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -50,14 +50,14 @@ export default function PointCharge(props) {
         }
       }
     );
-    props.setModalVisible((prev) => !prev);
+    props.setModalVisible((prev: any) => !prev);
   }
 
   function closeModal() {
-    props.setModalVisible((prev) => !prev);
+    props.setModalVisible((prev: any) => !prev);
   }
 
-  function onChangeAmount(value) {
+  function onChangeAmount(value: any) {
     setAmount(value);
   }
 

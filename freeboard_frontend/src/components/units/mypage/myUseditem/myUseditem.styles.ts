@@ -1,5 +1,13 @@
 import styled from "@emotion/styled";
 
+interface IMyUseditem {
+  isMyUseditem: Boolean;
+}
+
+interface IColorChange {
+  colorChange: Boolean;
+}
+
 export const Wrapper1 = styled.div`
   width: 100%;
   display: flex;
@@ -19,16 +27,16 @@ export const Title = styled.div`
   width: 1200px;
 `;
 
-export const MyUseditem = styled.div`
-  border-bottom: ${(props) =>
+export const MyUseditem = styled.div<IMyUseditem>`
+  border-bottom: ${(props: any) =>
     props.isMyUseditem ? "5px solid orange" : "default"};
-  color: ${(props) => (props.isMyUseditem ? "default" : "#bdbdbd")};
+  color: ${(props: any) => (props.isMyUseditem ? "default" : "#bdbdbd")};
   cursor: pointer;
 `;
 
-export const MyPickeditem = styled.div`
-  color: ${(props) => (props.isMyUseditem ? "#bdbdbd" : "default")};
-  border-bottom: ${(props) =>
+export const MyPickeditem = styled.div<IMyUseditem>`
+  color: ${(props: any) => (props.isMyUseditem ? "#bdbdbd" : "default")};
+  border-bottom: ${(props: any) =>
     props.isMyUseditem ? "default" : "5px solid orange"};
   margin-left: 20px;
   cursor: pointer;
@@ -187,7 +195,7 @@ export const ProfileImage = styled.img`
 
 export const ProfilePoint = styled.div`
   margin-top: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 `;
 
@@ -195,4 +203,15 @@ export const MyProfile = styled.div`
   margin-top: 30px;
   font-size: 18px;
   font-weight: bold;
+`;
+
+export const PageWrapper = styled.div`
+  margin-top: 20px;
+`;
+
+export const Page = styled.span<IColorChange>`
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+  color: ${(props: any) => (props.colorChange ? "red" : "default")};
 `;

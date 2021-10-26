@@ -8,7 +8,7 @@ import {
 } from "./signup.styles";
 import { Modal } from "antd";
 
-export default function SignUpUI(props) {
+export default function SignUpUI(props: any) {
   return (
     <Wrapper>
       <Modal

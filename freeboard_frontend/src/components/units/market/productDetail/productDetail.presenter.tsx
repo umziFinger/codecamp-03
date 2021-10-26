@@ -1,7 +1,6 @@
 import {
   Body,
   Buttons,
-  Carousel,
   ContentsTags,
   Header,
   Heart,
@@ -30,7 +29,6 @@ import {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Dompurify from "dompurify";
 
 const settings = {
   dots: true,
@@ -40,7 +38,7 @@ const settings = {
   speed: 500,
 };
 
-export default function ProductDetailUI(props) {
+export default function ProductDetailUI(props: any) {
   return (
     <Wrapper>
       <MainWrapper>
@@ -65,7 +63,14 @@ export default function ProductDetailUI(props) {
               <Name>{props.data?.fetchUseditem.name}</Name>
             </div>
             <Like>
-              <Heart src="/images/heart.png" onClick={props.onClickPick} />
+              {props.isPicked ? (
+                <Heart src="/images/heart.png" onClick={props.onClickPick} />
+              ) : (
+                <Heart
+                  src="/images/emptyheart.png"
+                  onClick={props.onClickPick}
+                />
+              )}
               <div>{props.data?.fetchUseditem.pickedCount}</div>
             </Like>
           </Title>
@@ -99,9 +104,33 @@ export default function ProductDetailUI(props) {
               }}
             />
             <Tags>
-              <div>{props.data?.fetchUseditem.tags[0]}</div>
-              <div>{props.data?.fetchUseditem.tags[1]}</div>
-              <div>{props.data?.fetchUseditem.tags[2]}</div>
+              {props.data?.fetchUseditem.tags.length ? (
+                <>
+                  <div>
+                    {props.data?.fetchUseditem.tags[0]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[0]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[0]}</div>
+                    )}
+                  </div>
+                  <div>
+                    {props.data?.fetchUseditem.tags[1]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[1]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[1]}</div>
+                    )}
+                  </div>
+                  <div>
+                    {props.data?.fetchUseditem.tags[2]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[2]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[2]}</div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div></div>
+              )}
             </Tags>
           </ContentsTags>
         </Body>

@@ -18,7 +18,7 @@ import {
   Wrapper,
 } from "./productCommentList.styles";
 
-export default function ProductCommentListUI(props) {
+export default function ProductCommentListUI(props: any) {
   return (
     <>
       {!props.isEdit ? (
@@ -61,7 +61,7 @@ export default function ProductCommentListUI(props) {
         />
       )}
 
-      {props.answersData?.fetchUseditemQuestionAnswers.map((el) => (
+      {props.answersData?.fetchUseditemQuestionAnswers.map((el: any) => (
         <ProductCommentAnswerList el={el} el2={props.el} />
       ))}
 

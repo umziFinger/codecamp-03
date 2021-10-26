@@ -1,6 +1,6 @@
 import { File, Upload } from "./uploads02.styles";
 
-export default function UpLoads02UI(props) {
+export default function UpLoads02UI(props: any) {
   return (
     <>
       <div>

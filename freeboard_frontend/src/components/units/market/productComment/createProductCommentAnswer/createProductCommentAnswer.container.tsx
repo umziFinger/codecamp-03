@@ -5,7 +5,7 @@ import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../productCommentList/productC
 import ProductCommentAnswerUI from "./createProductCommentAnswer.presenter";
 import { CREATE_USED_ITEM_QUESTION_ANSWER } from "./createProductCommentAnswer.queries";
 
-export default function ProductCommentAnswer(props) {
+export default function ProductCommentAnswer(props: any) {
   const [contents, setContents] = useState("");
   const [createUseditemQuestionAnswers] = useMutation(
     CREATE_USED_ITEM_QUESTION_ANSWER
@@ -15,7 +15,7 @@ export default function ProductCommentAnswer(props) {
   );
   const { data } = useQuery(FETCH_USED_ITEM_QUESTION_ANSWERS);
 
-  function onChangeAnswer(event) {
+  function onChangeAnswer(event: any) {
     setContents(event.target.value);
   }
 
@@ -52,7 +52,7 @@ export default function ProductCommentAnswer(props) {
         },
       ],
     });
-    props.setIsEdit((prev) => !prev);
+    props.setIsEdit((prev: any) => !prev);
   }
 
   return (

@@ -9,14 +9,14 @@ import { useRouter } from "next/router";
 export default function Login() {
   const [loginUser] = useMutation(LOGIN_USER);
   const router = useRouter();
-  const { setAccessToken, accessToken } = useContext(GlobalContext);
+  const { setAccessToken, accessToken }: any = useContext(GlobalContext);
 
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
   });
 
-  function onChangeInputs(event) {
+  function onChangeInputs(event: any) {
     setInputs({
       ...inputs,
       [event.target.name]: event.target.value,

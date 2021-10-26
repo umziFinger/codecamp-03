@@ -60,6 +60,7 @@ export const Login = styled.span`
 export const ProfileImg = styled.img`
   width: 40px;
   margin: 5px;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     width: 20px;
@@ -83,6 +84,7 @@ export const Logout = styled.img`
 
 export const Point = styled.div`
   font-size: 20px;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     display: none;

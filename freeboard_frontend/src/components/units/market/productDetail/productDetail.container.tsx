@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
+import { route } from "next/dist/server/router";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
 import { FETCH_USER_LOGGED_IN } from "../../../commons/layout/header/LayoutHeader.queries";
 import ProductDetailUI from "./productDetail.presenter";
-import { Modal } from "antd";
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   DELETE_USED_ITEM,
@@ -20,7 +20,7 @@ declare const window: typeof globalThis & {
 export default function ProductDetail() {
   const router = useRouter();
 
-  const [isPicked, setIsPicked] = useState();
+  const [isPicked, setIsPicked] = useState(true);
 
   const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
@@ -36,11 +36,25 @@ export default function ProductDetail() {
 
   const { data: userdata } = useQuery(FETCH_USER_LOGGED_IN);
 
-  const { data: pickeddata } = useQuery(FETCH_USED_ITEMS_I_PICKED);
+  const { data: pickeddata } = useQuery(FETCH_USED_ITEMS_I_PICKED, {
+    variables: {
+      search: "",
+    },
+  });
 
-  console.log("aaa", pickeddata);
+  useEffect(() => {
+    for (let i = 0; i < pickeddata?.fetchUseditemsIPicked.length; i++) {
+      if (
+        pickeddata?.fetchUseditemsIPicked[i]._id === router.query.useditemId
+      ) {
+        setIsPicked(true);
+        break;
+      } else {
+        setIsPicked(false);
+      }
+    }
+  }, [pickeddata]);
 
-  console.log(data?.fetchUseditem.images[0]);
   function onClickDelete() {
     deleteUseditem({
       variables: {
@@ -60,19 +74,18 @@ export default function ProductDetail() {
   }
 
   async function onClickBuy() {
-    const result = await createPointTransactionOfBuyingAndSelling({
-      variables: {
-        useritemId: router.query.useditemId,
-      },
-    });
-    console.log(result);
-    <Modal>완료</Modal>;
+    try {
+      const result = await createPointTransactionOfBuyingAndSelling({
+        variables: {
+          useritemId: router.query.useditemId,
+        },
+      });
+      alert("구매가 완료되었습니다");
+      router.push(`/mypage/mypoint`);
+    } catch (err) {
+      alert(err);
+    }
   }
-
-  const lat = data?.fetchUseditem.useditemAddress?.lat;
-  const lng = data?.fetchUseditem.useditemAddress?.lng;
-
-  console.log(lat, lng);
 
   // useEffect(() => {
   //   const script = document.createElement("script");
@@ -124,12 +137,10 @@ export default function ProductDetail() {
             Number(data?.fetchUseditem.useditemAddress?.lng) || 126.895113
           ), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
-          // draggable: false,
+          draggable: false,
         };
 
         const map = new window.kakao.maps.Map(container, options);
-
-        console.log(map);
 
         const marker = new window.kakao.maps.Marker({
           // 지도 중심좌표에 마커를 생성합니다
@@ -160,7 +171,7 @@ export default function ProductDetail() {
         );
       });
     };
-  });
+  }, [data]);
 
   async function onClickPick() {
     const result = await toggleUseditemPick({
@@ -172,18 +183,20 @@ export default function ProductDetail() {
         },
       ],
     });
-    console.log(result);
+    setIsPicked((prev) => !prev);
   }
 
   return (
     <ProductDetailUI
       data={data}
+      pickeddata={pickeddata}
       onClickDelete={onClickDelete}
       onClickUpdate={onClickUpdate}
       onClickMoveToList={onClickMoveToList}
       onClickBuy={onClickBuy}
       userdata={userdata}
       onClickPick={onClickPick}
+      isPicked={isPicked}
     />
   );
 }

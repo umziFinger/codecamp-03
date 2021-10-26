@@ -10,7 +10,6 @@ import {
   InputBox,
   Label,
   Location,
-  LocationRight,
   Map,
   Photo,
   ProductDetail,
@@ -27,7 +26,7 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-export default function CreateProductUI(props) {
+export default function CreateProductUI(props: any) {
   return (
     <form
       onSubmit={props.handleSubmit(

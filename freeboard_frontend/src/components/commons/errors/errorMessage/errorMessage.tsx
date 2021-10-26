@@ -5,6 +5,6 @@ const Error = styled.div`
   margin-top: 10px;
 `;
 
-export default function ErrorMessage(props) {
+export default function ErrorMessage(props: any) {
   return <Error>{props.message}</Error>;
 }

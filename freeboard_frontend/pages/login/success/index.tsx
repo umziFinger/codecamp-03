@@ -20,9 +20,9 @@ const Wrapper = styled.div`
   font-size: 30px;
 `;
 
-export const LoginSuccessPage = (props) => {
+export const LoginSuccessPage = (props: any) => {
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
-  const { setUserInfo, userInfo } = useContext(GlobalContext);
+  const { setUserInfo, userInfo }: any = useContext(GlobalContext);
 
   useEffect(() => {
     if (userInfo.name) return;

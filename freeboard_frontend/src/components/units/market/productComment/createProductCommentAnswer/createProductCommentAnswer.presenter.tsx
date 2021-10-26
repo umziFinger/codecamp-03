@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from "./createProductCommentAnswer.styles";
 
-export default function ProductCommentAnswerUI(props) {
+export default function ProductCommentAnswerUI(props: any) {
   return (
     <Wrapper>
       <CommentWrapper>

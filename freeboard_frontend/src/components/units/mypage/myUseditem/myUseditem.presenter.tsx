@@ -9,6 +9,8 @@ import {
   MyUseditem,
   Name,
   NameTitle,
+  Page,
+  PageWrapper,
   Price,
   PriceTitle,
   ProfileImage,
@@ -24,7 +26,7 @@ import {
   Wrapper1,
 } from "./myUseditem.styles";
 
-export default function MyUseditemUI(props) {
+export default function MyUseditemUI(props: any) {
   return (
     <Wrapper1>
       <Wrapper>
@@ -51,7 +53,7 @@ export default function MyUseditemUI(props) {
               <PriceTitle>가격</PriceTitle>
               <DateTitle>등록일</DateTitle>
             </Row>
-            {props.data?.fetchUseditemsISold.map((el, i) => (
+            {props.data?.fetchUseditemsISold.map((el: any, i: any) => (
               <Row id={el._id} onClick={props.onClickMyItem}>
                 <Index>{i + 1}</Index>
                 <Name>{el.name}</Name>
@@ -74,7 +76,7 @@ export default function MyUseditemUI(props) {
               <PriceTitle>가격</PriceTitle>
               <DateTitle>등록일</DateTitle>
             </Row>
-            {props.pickeddata?.fetchUseditemsIPicked.map((el, i) => (
+            {props.pickeddata?.fetchUseditemsIPicked.map((el: any, i: any) => (
               <Row id={el._id} onClick={props.onClickMyItem}>
                 <Index>{i + 1}</Index>
                 <Name>{el.name}</Name>
@@ -89,6 +91,18 @@ export default function MyUseditemUI(props) {
             ))}
           </MyItems>
         )}
+        <PageWrapper>
+          {new Array(5).fill(1).map((_, index) => (
+            <Page
+              onClick={props.onClickPage}
+              key={props.startPage + index}
+              id={props.startPage + index}
+              colorChange={props.currentPage === props.startPage + index}
+            >
+              {props.startPage + index}
+            </Page>
+          ))}
+        </PageWrapper>
       </Wrapper>
       <ProfileWrapper>
         <ProfileName>

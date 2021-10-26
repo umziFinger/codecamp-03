@@ -8,7 +8,7 @@ import {
   FETCH_USED_ITEM_QUESTION_ANSWERS,
 } from "./productCommentList.queries";
 
-export default function ProductCommentList(props) {
+export default function ProductCommentList(props: any) {
   const [isEdit, setIsEdit] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
   const [deleteUseditemQuestion] = useMutation(DELETE_USED_ITEM_QUESTION);
@@ -23,7 +23,7 @@ export default function ProductCommentList(props) {
     setIsEdit(true);
   }
 
-  function onClickDelete(event) {
+  function onClickDelete(event: any) {
     deleteUseditemQuestion({
       variables: {
         useditemQuestionId: event.target.id,

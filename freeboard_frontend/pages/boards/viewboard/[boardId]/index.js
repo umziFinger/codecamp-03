@@ -5,6 +5,7 @@ import { FETCH_BOARD_COMMENTS } from "../../../../src/components/units/board/com
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import InfiniteScroll from "react-infinite-scroller";
+import { v4 as uuid } from "uuid";
 
 export default function ViewBoardPage() {
   const router = useRouter();
@@ -31,7 +32,12 @@ export default function ViewBoardPage() {
     <>
       <BoardRead />
       <CommentWrite />
-      <InfiniteScroll pageStart={0} loadMore={onLoadMore} hasMore={true}>
+      <InfiniteScroll
+        key={uuid}
+        pageStart={0}
+        loadMore={onLoadMore}
+        hasMore={true}
+      >
         {data?.fetchBoardComments.map((el) => (
           <CommentRead key={el._id} data={data} el={el} />
         ))}

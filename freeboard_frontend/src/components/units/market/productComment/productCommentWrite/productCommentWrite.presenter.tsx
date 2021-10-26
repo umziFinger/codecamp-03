@@ -11,7 +11,7 @@ import {
   Line,
 } from "./productCommentWrite.styles";
 
-export default function ProductCommentWriteUI(props) {
+export default function ProductCommentWriteUI(props: any) {
   return (
     <Wrapper>
       <Line></Line>

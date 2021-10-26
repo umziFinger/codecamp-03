@@ -1,7 +1,7 @@
 import PointCharge from "../../../units/market/pointCharge/pointCharge.container";
 import { Menu, MenuWrapper, SubMenu, Wrapper } from "./LayoutSidebar.styled";
 
-export default function LayoutSidebarUI(props) {
+export default function LayoutSidebarUI(props: any) {
   return (
     <>
       <Wrapper>

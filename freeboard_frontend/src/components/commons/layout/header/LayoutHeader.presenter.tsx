@@ -12,7 +12,7 @@ import {
   Wrapper,
 } from "./LayoutHeader.styled";
 
-export default function LayoutHeaderUI(props) {
+export default function LayoutHeaderUI(props: any) {
   return (
     <StickyWrapper>
       <Wrapper>
@@ -20,9 +20,12 @@ export default function LayoutHeaderUI(props) {
         <RightTop>
           {process.browser && localStorage.getItem("isLogedIn") ? (
             <>
-              <ProfileImg src="/images/profile.png" />
+              <ProfileImg
+                src="/images/profile.png"
+                onClick={props.onClickProfileImage}
+              />
               <ProfileName>{props.data?.fetchUserLoggedIn.name}님</ProfileName>
-              <Point>
+              <Point onClick={props.onClickPoint}>
                 {props.data?.fetchUserLoggedIn.userPoint.amount}포인트
               </Point>
               <Logout

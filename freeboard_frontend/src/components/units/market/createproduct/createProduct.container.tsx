@@ -16,7 +16,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function CreateProduct(props) {
+export default function CreateProduct(props: any) {
   // const [inputs, setInputs] = useState();
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
@@ -37,11 +37,11 @@ export default function CreateProduct(props) {
     resolver: yupResolver(schema),
   });
 
-  const onChangeTags = (event) => {
+  const onChangeTags = (event: any) => {
     setTags(event.target.value.split(" "));
   };
 
-  async function onClickSubmit(data) {
+  async function onClickSubmit(data: any) {
     console.log({ ...data });
 
     const uploadFiles = files
@@ -68,7 +68,7 @@ export default function CreateProduct(props) {
     // setInputs(data);
   }
 
-  async function onClickUpdate(data1) {
+  async function onClickUpdate(data1: any) {
     const myUpdateUseditemInput: any = {};
     if (data1.name) myUpdateUseditemInput.name = data1.name;
     if (data1.remarks) myUpdateUseditemInput.remarks = data1.remarks;
@@ -110,7 +110,7 @@ export default function CreateProduct(props) {
     router.push(`/market/detail/${router.query.useditemId}`);
   }
 
-  function onChangeContents(value) {
+  function onChangeContents(value: any) {
     setValue("contents", value === "<p><br></p>" ? "" : value);
     console.log(value);
     trigger("contents");

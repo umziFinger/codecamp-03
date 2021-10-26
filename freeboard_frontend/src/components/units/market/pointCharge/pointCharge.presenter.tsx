@@ -3,7 +3,7 @@ import { Select } from "antd";
 
 const { Option } = Select;
 
-export default function PointChargeUI(props) {
+export default function PointChargeUI(props: any) {
   return (
     <>
       <Modal

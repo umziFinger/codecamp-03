@@ -156,6 +156,8 @@ export const ToBuy = styled.button`
 `;
 
 export const Tags = styled.div`
+  font-size: 20px;
+  font-weight: bold;
   margin-top: 50px;
   width: 200px;
   display: flex;

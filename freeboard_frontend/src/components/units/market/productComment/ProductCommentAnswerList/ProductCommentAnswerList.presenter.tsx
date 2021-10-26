@@ -14,7 +14,7 @@ import {
   Wrapper,
 } from "./ProductCommentAnswerList.styles";
 
-export default function ProductCommentAnswerListUI(props) {
+export default function ProductCommentAnswerListUI(props: any) {
   return (
     <>
       {!props.isEdit ? (

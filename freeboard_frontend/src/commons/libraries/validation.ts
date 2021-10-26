@@ -1,4 +1,4 @@
-export function fileValidation(file) {
+export function fileValidation(file: any) {
   if (!file) {
     alert("파일이 없습니다");
     return false;

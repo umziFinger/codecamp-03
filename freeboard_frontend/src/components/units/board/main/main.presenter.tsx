@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from "./main.styled";
 
-export default function MainPageUI(props) {
+export default function MainPageUI(props: any) {
   return (
     <>
       <Wrapper>

@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { fileValidation } from "../../../../commons/libraries/validation";
 import UpLoads02UI from "./uploads02.presenter";
 
-export default function UpLoads02(props) {
+export default function UpLoads02(props: any) {
   const fileRef = useRef<HTMLInputElement>();
   const [imageUrl, setImageUrl] = useState("");
 
@@ -11,9 +11,9 @@ export default function UpLoads02(props) {
     const file = event.target.files[0];
     if (!fileValidation(file)) return;
 
-    const fileReader = new FileReader();
+    const fileReader: any = new FileReader();
     fileReader.readAsDataURL(file);
-    fileReader.onload = (data) => {
+    fileReader.onload = (data: any) => {
       setImageUrl(data.target.result);
       props.onChangeFile(file, props.index);
     };

@@ -27,13 +27,13 @@ import {
 import InfiniteScroll from "react-infinite-scroller";
 import { v4 as uuid } from "uuid";
 
-export default function ProductListUI(props) {
+export default function ProductListUI(props: any) {
   return (
     <Wrapper>
       <MainWrapper>
         <Title>베스트 상품</Title>
         <BestWrapper>
-          {props.bestdata?.fetchUseditemsOfTheBest.map((el) => (
+          {props.bestdata?.fetchUseditemsOfTheBest.map((el: any) => (
             <BestRow id={el._id} onClick={props.onClickBestUseditem}>
               <div>
                 {el.images[0] ? (
@@ -54,12 +54,12 @@ export default function ProductListUI(props) {
           ))}
         </BestWrapper>
         <InfiniteScroll
-          key={uuid}
+          key={String(uuid)}
           pageStart={0}
           loadMore={props.onLoadMore}
           hasMore={true}
         >
-          {props.data?.fetchUseditems.map((el) => (
+          {props.data?.fetchUseditems.map((el: any) => (
             <Row
               id={el._id}
               key={el._id}
@@ -107,7 +107,7 @@ export default function ProductListUI(props) {
           {props.todayView?.length > 5
             ? props.todayView
                 .slice(props.todayView?.length - 5, props.todayView?.length)
-                .map((el) => (
+                .map((el: any) => (
                   <TodayViewProduct
                     id={el._id}
                     key={el._id}
@@ -126,7 +126,7 @@ export default function ProductListUI(props) {
                 ))
                 .reverse()
             : props.todayView
-                ?.map((el) => (
+                ?.map((el: any) => (
                   <TodayViewProduct
                     id={el._id}
                     key={el._id}

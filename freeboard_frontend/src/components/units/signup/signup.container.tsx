@@ -24,7 +24,7 @@ export default function SignUp() {
 
   const [createUser] = useMutation(CREATE_USER);
 
-  function onChangeInputs(event) {
+  function onChangeInputs(event: any) {
     setInputs({
       ...inputs,
       [event.target.name]: event.target.value,
@@ -67,7 +67,7 @@ export default function SignUp() {
     // }
   }
 
-  function onChangePassword2(event) {
+  function onChangePassword2(event: any) {
     setPassword2(event.target.value);
   }
 

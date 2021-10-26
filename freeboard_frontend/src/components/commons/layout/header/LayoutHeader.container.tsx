@@ -9,7 +9,7 @@ import { FETCH_USER_LOGGED_IN } from "./LayoutHeader.queries";
 
 export default function LayoutHeader() {
   const router = useRouter();
-  const { accessToken, setAccessToken } = useContext(GlobalContext);
+  const { accessToken, setAccessToken }: any = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
   console.log(data);
@@ -32,6 +32,14 @@ export default function LayoutHeader() {
     alert("로그아웃");
   }
 
+  const onClickProfileImage = () => {
+    router.push(`/mypage/myuseditem`);
+  };
+
+  const onClickPoint = () => {
+    router.push(`/mypage/mypoint`);
+  };
+
   // useEffect(() => {
 
   // }, [accessToken]);
@@ -42,6 +50,8 @@ export default function LayoutHeader() {
       onClickSignUp={onClickSignUp}
       onClickLogo={onClickLogo}
       onClickLogout={onClickLogout}
+      onClickProfileImage={onClickProfileImage}
+      onClickPoint={onClickPoint}
       data={data}
     />
   );

@@ -10,7 +10,7 @@ import {
   UPDATE_USED_ITEM_QUESTION,
 } from "./productCommentWrite.queries";
 
-export default function ProductCommentWrite(props) {
+export default function ProductCommentWrite(props: any) {
   const [contents, setContents] = useState("");
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>();
@@ -26,7 +26,7 @@ export default function ProductCommentWrite(props) {
   //   inputRef.current?.
   // },[])
 
-  function onChangeCommentContents(event) {
+  function onChangeCommentContents(event: any) {
     setContents(event.target.value);
   }
 
@@ -48,7 +48,7 @@ export default function ProductCommentWrite(props) {
     setContents("");
   }
 
-  function onClickQuestionEdit(event) {
+  function onClickQuestionEdit(event: any) {
     // useEffect(() => {
     //   setContents(props.el.contents);
     // });

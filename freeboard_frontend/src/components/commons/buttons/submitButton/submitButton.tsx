@@ -12,6 +12,6 @@ const Submit = styled.button`
   background-color: ${(props: IProps) => (props.isValid ? "#ffd600" : "")};
 `;
 
-export default function SubmitButton(props) {
+export default function SubmitButton(props: any) {
   return <Submit isValid={props.isValid}>{props.name}</Submit>;
 }

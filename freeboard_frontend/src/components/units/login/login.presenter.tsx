@@ -9,7 +9,7 @@ import {
   Wrapper,
 } from "./login.styles";
 
-export default function LoginUI(props) {
+export default function LoginUI(props: any) {
   return (
     <Wrapper>
       <Logo>LOGO</Logo>

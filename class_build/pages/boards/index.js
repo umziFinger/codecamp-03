@@ -8,7 +8,7 @@ export default function BoardPage() {
         <meta property="og:description" content="환영합니다" />
         <meta
           property="og:image"
-          content="https://cdnweb01.wikitree.co.kr/webdata/editor/202004/07/img_20200407162305_1f42c686.webp"
+          content="https://e7.pngegg.com/pngimages/118/821/png-clipart-moon-moon.png"
         />
       </Head>
       <div>페이지sdfgsdfg입니다.</div>

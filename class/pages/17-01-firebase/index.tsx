@@ -13,6 +13,7 @@ export default function Firebasepage() {
       writer: "철수",
       title: "제목입니다",
       contents: "내용입니다",
+      aaa: "aosivnoaw",
     });
   }
 

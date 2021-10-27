@@ -9,7 +9,7 @@ export default function Main() {
         <meta property="og:description" content="환영합니다" />
         <meta
           property="og:image"
-          content={`https://storage.googleapis.com/codecamp-file-storage/2021/10/26/profile.png`}
+          content={`https://storage.googleapis.com/codecamp-file-storage/2021/10/26/banner4.jpeg`}
         />
       </Head>
       <MainPage />

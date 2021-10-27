@@ -1,0 +1,10 @@
+version: "3.3"
+# 3.3이상 사용
+
+services:
+  class_build:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000

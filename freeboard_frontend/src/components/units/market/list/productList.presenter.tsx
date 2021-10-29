@@ -104,8 +104,9 @@ export default function ProductListUI(props: any) {
       <div>
         <TodayView>
           today!
-          {props.todayView?.length > 5
-            ? props.todayView
+          {props.todayView.length ? (
+            props.todayView?.length > 5 ? (
+              props.todayView
                 .slice(props.todayView?.length - 5, props.todayView?.length)
                 .map((el: any) => (
                   <TodayViewProduct
@@ -125,7 +126,8 @@ export default function ProductListUI(props: any) {
                   </TodayViewProduct>
                 ))
                 .reverse()
-            : props.todayView
+            ) : (
+              props.todayView
                 ?.map((el: any) => (
                   <TodayViewProduct
                     id={el._id}
@@ -143,7 +145,11 @@ export default function ProductListUI(props: any) {
                     <div>{el.price?.toLocaleString()}원</div>
                   </TodayViewProduct>
                 ))
-                .reverse()}
+                .reverse()
+            )
+          ) : (
+            <div></div>
+          )}
         </TodayView>
       </div>
     </Wrapper>

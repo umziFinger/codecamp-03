@@ -23,7 +23,7 @@ export default function ProductList() {
   const onClickMoveToDetail = (el: any) => () => {
     router.push(`/market/detail/${el._id}`);
 
-    const todayView = JSON.parse(localStorage.getItem(clickDate) || "{}") || [];
+    const todayView = JSON.parse(localStorage.getItem(clickDate) || "[]") || [];
 
     todayView.push(el);
     console.log(el);

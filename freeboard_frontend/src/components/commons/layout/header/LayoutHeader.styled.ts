@@ -7,7 +7,7 @@ export const StickyWrapper = styled.div`
   width: 100%;
   height: 150px;
   background-color: black;
-  z-index: 1;
+  z-index: 2;
 
   @media ${breakPoints.mobile} {
     height: 80px;
@@ -28,13 +28,10 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Logo = styled.div`
-  font-size: 50px;
-  color: white;
+export const Logo = styled.img`
   cursor: pointer;
 
   @media ${breakPoints.mobile} {
-    font-size: 20px;
   }
 `;
 

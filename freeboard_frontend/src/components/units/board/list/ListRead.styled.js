@@ -151,6 +151,20 @@ export const Button = styled.button`
   cursor: pointer;
 `;
 
+export const RegionWrapper = styled.div`
+  width: 1200px;
+  margin-top: 20px;
+`;
+
+export const Region = styled.span`
+  font-size: 18px;
+  font-weight: 500;
+  margin-right: 20px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  background-color: #ffd600;
+`;
+
 export const List = styled.div`
   border-top: 2px solid black;
   border-bottom: 1px solid black;

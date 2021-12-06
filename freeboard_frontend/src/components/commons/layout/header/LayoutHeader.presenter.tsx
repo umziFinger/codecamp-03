@@ -16,7 +16,8 @@ export default function LayoutHeaderUI(props: any) {
   return (
     <StickyWrapper>
       <Wrapper>
-        <Logo onClick={props.onClickLogo}>LOGO</Logo>
+        {/* <Logo onClick={props.onClickLogo}>동네술집</Logo> */}
+        <Logo src="/images/logo.png" onClick={props.onClickLogo} />
         <RightTop>
           {process.browser && localStorage.getItem("isLogedIn") ? (
             <>

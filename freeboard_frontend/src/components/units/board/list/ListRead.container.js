@@ -32,6 +32,14 @@ export default function ListRead() {
     router.push(`/boards/new`);
   }
 
+  function onClickRegion(event) {
+    refetch({
+      page: 1,
+      search: String(event.target.id),
+    });
+    setCurrentPage(Number(event.target.id));
+  }
+
   function onClickPage(event) {
     refetch({
       page: Number(event.target.id),
@@ -87,6 +95,7 @@ export default function ListRead() {
       keyword={keyword}
       bestBoardData={bestBoardData}
       onClickBestBoard={onClickBestBoard}
+      onClickRegion={onClickRegion}
     />
   );
 }
